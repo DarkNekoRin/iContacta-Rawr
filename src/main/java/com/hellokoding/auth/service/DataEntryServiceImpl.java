@@ -16,6 +16,11 @@ public class DataEntryServiceImpl implements DataEntryService{
 		dataEntyRepository.save(dataEntry);
 		
 	}
+
+	@Override
+	public void saveIterable(Iterable<DataEntry> iteralbleDataEntry) {
+		dataEntyRepository.save(iteralbleDataEntry);
+	}
    
     
 }
