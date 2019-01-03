@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "rol",schema="dwhac")
+@Table(name = "dgov_dataentry_rol",schema="dwhac")
 public class Role {
     private Long id;
     private String name;

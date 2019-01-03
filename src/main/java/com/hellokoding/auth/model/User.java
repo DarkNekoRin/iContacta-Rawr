@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "usuario",schema="dwhac")
+@Table(name = "dgov_dataentry_usuario",schema="dwhac")
 public class User {
     private Long id;
     private String username;
@@ -51,7 +51,7 @@ public class User {
     }
 
     @ManyToMany
-    @JoinTable(name = "usuario_rol",schema="dwhac", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    @JoinTable(name = "dgov_dataentry_usuario_rol",schema="dwhac", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     public Set<Role> getRoles() {
         return roles;
     }
