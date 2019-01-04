@@ -5,7 +5,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
@@ -14,6 +16,8 @@ import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -24,6 +28,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.hellokoding.auth.model.DataEntry;
 import com.hellokoding.auth.model.DataEntryView;
 import com.hellokoding.auth.service.DataEntryService;
+import com.hellokoding.auth.service.UserService;
 
 @Controller
 public class UploadController {
@@ -34,6 +39,8 @@ public class UploadController {
     private String UPLOADED_FOLDER;
     @Autowired
     private DataEntryService dataEntryService;
+    @Autowired
+    private UserService userService;
 
 //    @GetMapping("/")
 //    public String index() {
@@ -72,7 +79,20 @@ public class UploadController {
           //leer
 //    		String fileName = "c://lines.txt";
             List<DataEntry> list = new ArrayList<DataEntry>();
-
+            User userSecurity = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            
+            com.hellokoding.auth.model.User userModel=userService.findByUsername(userSecurity.getUsername());
+            
+            
+            
+//            el ID_SOLICITUD ahi tendría sentido  generar  B28219201812271823 = USUARIO + AÑO + MES + DIA + HR + MINUTO
+            
+            Calendar fechaActual = Calendar.getInstance();
+            String idSolicitud=userModel.getUsername().toUpperCase();
+           
+            SimpleDateFormat formatmat = new SimpleDateFormat("yyyyMMddHHmmss");
+            String fechaStr=formatmat.format(fechaActual.getTime());
+            idSolicitud=idSolicitud+fechaStr;
             
     		try (Scanner scanner = new Scanner(new File(path.toString()))) {
     			scanner.nextLine();//primera columna
@@ -83,10 +103,12 @@ public class UploadController {
     				dataEntry=new DataEntry();
     				dataEntry.setTipoDocumento(columna[0]);
     				dataEntry.setDocumento(columna[1]);
-    				dataEntry.setFechaRegistro(new Date());
+    				dataEntry.setFechaRegistro(fechaActual);
     				dataEntry.setFlgDireccion(dataEntryView.getDireccion());
     				dataEntry.setFlgEmail(dataEntryView.getEmail());
     				dataEntry.setFlgTelefono(dataEntryView.getTelefono());
+    				dataEntry.setUsuarioSolicitud(userModel);
+    				dataEntry.setIdSolicitud(idSolicitud);
     				list.add(dataEntry);
     			}
 
