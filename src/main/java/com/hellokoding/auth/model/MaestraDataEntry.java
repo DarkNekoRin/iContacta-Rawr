@@ -52,8 +52,8 @@ public class MaestraDataEntry {
     private java.util.Calendar fechaRegistro;
     
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "DATAENTRY_SEQ")
-    @SequenceGenerator(sequenceName = "maestra_data_entry_seq", allocationSize = 1, name = "DATAENTRY_SEQ")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "MAESTRA_DATA_ENTRY_SEQ")
+    @SequenceGenerator(sequenceName = "maestra_data_entry_seq", allocationSize = 1, name = "MAESTRA_DATA_ENTRY_SEQ")
     public Long getId() {
         return id;
     }
