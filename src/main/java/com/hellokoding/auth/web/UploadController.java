@@ -117,6 +117,7 @@ public class UploadController {
             
     		dataEntryService.saveIterable(list);
             
+    		dataEntryService.ejecutarEtl(idSolicitud);
             
 
             redirectAttributes.addFlashAttribute("message",

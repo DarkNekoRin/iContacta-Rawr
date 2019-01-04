@@ -197,8 +197,7 @@
 			<!-- /.col-xs-12 -->
 
 
-<!-- <form method="POST" action="/upload" enctype="multipart/form-data"> -->
-  <form method="POST" action="/upload?${_csrf.parameterName}=${_csrf.token}" enctype="multipart/form-data">  
+  <form data-toggle="validator" method="POST" action="/upload?${_csrf.parameterName}=${_csrf.token}" enctype="multipart/form-data">  
     			<div class="col-md-6 col-xs-12">
 				<div class="box-content">
 					<h4 class="box-title">Limit File Size</h4>
@@ -215,7 +214,7 @@
 						<!-- /.sub-menu -->
 					</div>
 					<!-- /.dropdown js__dropdown -->
-					<input type="file" name="file" id="input-file-to-destroy" class="dropify" data-allowed-formats="portrait square" data-max-file-size="2M" data-max-height="2000" />
+					<input type="file" name="file" id="input-file-to-destroy" class="dropify" data-allowed-formats="portrait square" data-max-file-size="2M" data-max-height="2000" required/>
                     <p class="help margin-top-10">Only portrait or square images, 2M max and 2000px max-height.</p>
 				
 				<!-- /.dropdown js__dropdown -->

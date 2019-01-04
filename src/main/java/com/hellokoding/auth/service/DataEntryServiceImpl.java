@@ -21,6 +21,9 @@ public class DataEntryServiceImpl implements DataEntryService{
 	public void saveIterable(Iterable<DataEntry> iteralbleDataEntry) {
 		dataEntyRepository.save(iteralbleDataEntry);
 	}
-   
-    
+
+	@Override
+	public void ejecutarEtl(String idSolicitud) {
+		dataEntyRepository.ejecutarEtl(idSolicitud);		
+	}
 }

@@ -10,6 +10,6 @@ import com.hellokoding.auth.model.DataEntry;
 
 public interface DataEntyRepository extends JpaRepository<DataEntry, Long> {
 	@Transactional
-    @Procedure(procedureName = "MOVE_TO_HISTORY")
-    void ejecutarEtl(@Param("person_id_in") String idSolicitud);
+    @Procedure(procedureName = "SP_DGOV_DATA_ENTRY")
+    void ejecutarEtl(@Param("id_solicitud") String idSolicitud);
 }
