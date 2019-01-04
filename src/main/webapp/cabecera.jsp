@@ -28,11 +28,14 @@
 	<!-- Sweet Alert -->
 	<link rel="stylesheet" href="${contextPath}/assets/plugin/sweet-alert/sweetalert.css">
 	
+	
 	<!-- Dropify -->
 	<link rel="stylesheet" href="${contextPath}/assets/plugin/dropify/css/dropify.min.css">
 
 	<!-- Dark Themes -->
 	<link rel="stylesheet" href="${contextPath}/assets/styles/style-dark.min.css">
+		<!-- Toastr -->
+	<link rel="stylesheet" href="${contextPath}/assets/plugin/toastr/toastr.css">
 </head>
 
 <body>

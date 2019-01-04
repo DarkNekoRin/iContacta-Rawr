@@ -197,7 +197,7 @@
 			<!-- /.col-xs-12 -->
 
 
-  <form data-toggle="validator" method="POST" action="/upload?${_csrf.parameterName}=${_csrf.token}" enctype="multipart/form-data">  
+  <form data-toggle="validator" id="fileUploadForm" method="POST" action="/upload?${_csrf.parameterName}=${_csrf.token}" enctype="multipart/form-data">  
     			<div class="col-md-6 col-xs-12">
 				<div class="box-content">
 					<h4 class="box-title">Limit File Size</h4>
@@ -225,7 +225,7 @@
 					<!-- /.switch -->
 					<div class="switch success"><input type="checkbox" name="direccion" checked id="switch-3"><label for="switch-3">Direcci&oacute;n</label></div>
 					<!-- /.box-content -->
-					<button type="submit" class="btn btn-primary btn-rounded waves-effect waves-light">Procesar</button>
+					<button type="button" id="procesar" class="btn btn-primary btn-rounded waves-effect waves-light">Procesar</button>
 				</div>
 				</div>
     
@@ -266,6 +266,11 @@
 	<!-- Dropify -->
 	<script src="${contextPath}/assets/plugin/dropify/js/dropify.min.js"></script>
 	<script src="${contextPath}/assets/scripts/fileUpload.demo.min.js"></script>
+
+
+	<!-- Toastr -->
+	<script src="${contextPath}/assets/plugin/toastr/toastr.min.js"></script>
+	<script src="${contextPath}/assets/scripts/toastr.demo.min.js"></script>
 
 	<script src="${contextPath}/assets/scripts/main.js"></script>
 	<script src="${contextPath}/resources/js/subirarchivo.js"></script>
