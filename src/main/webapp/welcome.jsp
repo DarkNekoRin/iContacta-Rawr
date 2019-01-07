@@ -228,13 +228,58 @@
 					<button type="button" id="procesar" class="btn btn-primary btn-rounded waves-effect waves-light">Procesar</button>
 				</div>
 				</div>
-
-    
-    
-</form>
-			
-			<!-- /.col-md-6 col-xs-12 -->
+</form>			<!-- /.col-md-6 col-xs-12 -->
 		</div>
+		
+		<div class="col-xs-12">
+				<div class="box-content">
+					<h4 class="box-title">Row grouping</h4>
+					<!-- /.box-title -->
+					<div class="dropdown js__drop_down">
+						<a href="#" class="dropdown-icon glyphicon glyphicon-option-vertical js__drop_down_button"></a>
+						<ul class="sub-menu">
+							<li><a href="#">Action</a></li>
+							<li><a href="#">Another action</a></li>
+							<li><a href="#">Something else there</a></li>
+							<li class="split"></li>
+							<li><a href="#">Separated link</a></li>
+						</ul>
+						<!-- /.sub-menu -->
+					</div>
+					<!-- /.dropdown js__dropdown -->
+					<table id="example-row-grouping" class="table table-striped table-bordered display" style="width:100%">
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Position</th>
+								<th>Office</th>
+								<th>Age</th>
+								<th>Start date</th>
+								<th>Salary</th>
+							</tr>
+						</thead>
+						<tfoot>
+							<tr>
+								<th>Name</th>
+								<th>Position</th>
+								<th>Office</th>
+								<th>Age</th>
+								<th>Start date</th>
+								<th>Salary</th>
+							</tr>
+						</tfoot>
+						<tbody>
+
+						</tbody>
+					</table>
+				</div>
+				<!-- /.box-content -->
+			</div>
+			<!-- /.col-xs-12 -->
+		
+		
+		
+		
 		<div class="alert alert-danger">
     		<strong>Danger!</strong> ${error}
   		</div>
