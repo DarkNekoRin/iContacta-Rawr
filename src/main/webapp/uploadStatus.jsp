@@ -193,6 +193,12 @@
 <div id="wrapper">
 	<div class="main-content">
 		
+	<div class="alert alert-success">
+	    <strong>Success!</strong> Proceso Ejecutado correctamente
+	 </div>
+		
+		
+		
 		<footer class="footer">
 			<ul class="list-inline">
 				<li>2016 © NinjaAdmin.</li>

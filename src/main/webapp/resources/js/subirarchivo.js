@@ -2,8 +2,9 @@
  * 
  */
 $(document ).ready(function() {	
+	 $(".alert").hide();
 	$('#procesar').click(function(){	
-		console.log("procesar"); 
+		console.log("procesar1"); 
 
         
         var form = $('#fileUploadForm')[0];
@@ -47,12 +48,15 @@ $(document ).ready(function() {
                     $("#procesar").prop("disabled", false);
                     $(".sweet-alert").hide();
                     $(".sweet-overlay").hide();
+                    window.location = "uploadStatus";
                 },
                 error: function (e) {
                     console.log("ERROR : ", e);
                     $("#procesar").prop("disabled", false);
                     $(".sweet-alert").hide();
                     $(".sweet-overlay").hide();
+                    $(".alert").show();
+                    
                 }
             });
         }else{

@@ -228,13 +228,16 @@
 					<button type="button" id="procesar" class="btn btn-primary btn-rounded waves-effect waves-light">Procesar</button>
 				</div>
 				</div>
-    
+
     
     
 </form>
 			
 			<!-- /.col-md-6 col-xs-12 -->
 		</div>
+		<div class="alert alert-danger">
+    		<strong>Danger!</strong> ${error}
+  		</div>
 		<!-- /.row small-spacing -->		
 		<footer class="footer">
 			<ul class="list-inline">
