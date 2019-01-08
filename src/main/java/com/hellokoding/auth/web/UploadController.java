@@ -8,12 +8,16 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -29,11 +33,25 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.hellokoding.auth.model.DataEntryView;
 import com.hellokoding.auth.service.DataEntryService;
 import com.hellokoding.auth.service.UserService;
+import com.hellokoding.auth.util.OracleSqlLoader;
+import com.hellokoding.auth.util.OracleSqlLoader.ExitCode;
+import com.hellokoding.auth.util.OracleSqlLoader.Results;
 
 @Controller
 public class UploadController {
 
-
+	@Autowired
+	DataSource dataSource;
+    @Value("${spring.datasource.username}")
+    private String username;
+    @Value("${spring.datasource.password}")
+    private String password;
+	
+    @Value("${ora.instance}")
+    private String instance;
+	
+	
+	
     
     @Value("${ruta.archivo}")
     private String UPLOADED_FOLDER;
@@ -144,7 +162,7 @@ public class UploadController {
 //    		dataEntryService.saveIterable(list);
 //    		dataEntryService.ejecutarEtl(idSolicitud);
             
-
+    		ejecutaCarga(UPLOADED_FOLDER+idSolicitud);
             redirectAttributes.addFlashAttribute("message",
                     "You successfully uploaded '" + dataEntryView.getFile().getOriginalFilename() + "'");
 
@@ -164,6 +182,31 @@ public class UploadController {
         return Stream.of(str.split(","))
           .map (elem -> new String(elem))
           .collect(Collectors.toList());
+    }
+    
+    public void ejecutaCarga(String path) {
+    	Connection conn;
+		try {
+			conn = dataSource.getConnection();
+	    	File dataFile=new File(path); 
+	    	  final Results results = OracleSqlLoader.bulkLoad(conn, username, password, instance, "DGOV_DATAENTRY_TMP", dataFile);
+		
+	        // ========================================================================================================
+	        // Analyze
+	        // ========================================================================================================
+	        if (results.exitCode != ExitCode.SUCCESS) {
+	                System.err.println("Failed. Exit code: " + results.exitCode + ". See log file: " + results.logFile);
+//	                System.exit(1);
+	        }
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+
     }
 
 }
