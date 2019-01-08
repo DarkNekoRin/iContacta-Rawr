@@ -80,7 +80,7 @@ public final class OracleSqlLoader {
                 "PRESERVE BLANKS \n" +
                 "badfile '" + badFileName + "'\n" +
                 "discardfile '" + discardFileName + "'\n" +
-                "append\n" +
+                "append \n" +
                 "into table " + tableName + "\n" +
                 "fields terminated by '|'" + "\n" + 
                 "TRAILING NULLCOLS " + "\n" + 
