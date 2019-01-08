@@ -1,12 +1,14 @@
 package com.hellokoding.auth.web;
 
+
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Scanner;
@@ -24,7 +26,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.hellokoding.auth.model.DataEntry;
 import com.hellokoding.auth.model.DataEntryView;
 import com.hellokoding.auth.service.DataEntryService;
 import com.hellokoding.auth.service.UserService;
@@ -75,9 +76,8 @@ public class UploadController {
             Path path = Paths.get(UPLOADED_FOLDER + dataEntryView.getFile().getOriginalFilename());
             Files.write(path, bytes);
             
-          //leer
-//    		String fileName = "c://lines.txt";
-            List<DataEntry> list = new ArrayList<DataEntry>();
+
+//          List<DataEntry> list = new ArrayList<DataEntry>();
             User userSecurity = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             
             com.hellokoding.auth.model.User userModel=userService.findByUsername(userSecurity.getUsername());
@@ -93,31 +93,56 @@ public class UploadController {
             String fechaStr=formatmat.format(fechaActual.getTime());
             idSolicitud=idSolicitud+fechaStr;
             
+   
+            BufferedWriter bw = null;
+    		FileWriter fw = null; 
+            
     		try (Scanner scanner = new Scanner(new File(path.toString()))) {
-    			scanner.nextLine();//primera columna
+    			 fw = new FileWriter(UPLOADED_FOLDER+idSolicitud+".txt");
+    			 bw = new BufferedWriter(fw);	
+    			 bw.write("TIPODOC|DOCUMENTO|FAGDIRECCION|FAGEMAIL|FAGTELEFONO|USERIDSOLICITUD|IDSOLICITUD");
+    			 bw.newLine();
+    			 scanner.nextLine();//primera columna
     			String columna[]=null;
-    			DataEntry dataEntry=null;
+//    			DataEntry dataEntry=null;
     			while (scanner.hasNext()){
     				columna=scanner.nextLine().split(",");
-    				dataEntry=new DataEntry();
-    				dataEntry.setTipoDocumento(columna[0]);
-    				dataEntry.setDocumento(columna[1]);
-    				dataEntry.setFechaRegistro(fechaActual);
-    				dataEntry.setFlgDireccion(dataEntryView.getDireccion());
-    				dataEntry.setFlgEmail(dataEntryView.getEmail());
-    				dataEntry.setFlgTelefono(dataEntryView.getTelefono());
-    				dataEntry.setUsuarioSolicitud(userModel);
-    				dataEntry.setIdSolicitud(idSolicitud);
-    				list.add(dataEntry);
+//    				dataEntry=new DataEntry();
+//    				dataEntry.setTipoDocumento(columna[0]);
+//    				dataEntry.setDocumento(columna[1]);
+//    				dataEntry.setFechaRegistro(fechaActual);
+//    				dataEntry.setFlgDireccion(dataEntryView.getDireccion());
+//    				dataEntry.setFlgEmail(dataEntryView.getEmail());
+//    				dataEntry.setFlgTelefono(dataEntryView.getTelefono());
+//    				dataEntry.setUsuarioSolicitud(userModel);
+//    				dataEntry.setIdSolicitud(idSolicitud);
+    				
+    				bw.write(columna[0]+"|"+columna[1]+"|"+(dataEntryView.getDireccion()?1:0)+"|"+(dataEntryView.getEmail()?1:0)+"|"+(dataEntryView.getTelefono()?1:0)+"|"+userModel.getId()+"|"+idSolicitud);
+    				bw.newLine();
+    				
+//    				list.add(dataEntry);
     			}
 
     		} catch (IOException e) {
     			e.printStackTrace();
     		}
-            
-    		dataEntryService.saveIterable(list);
-            
-    		dataEntryService.ejecutarEtl(idSolicitud);
+    		try {
+
+    		File original=new File(path.toString());
+    		original.delete();	
+				if (bw != null)
+					bw.close();
+
+				if (fw != null)
+					fw.close();
+
+			} catch (IOException ex) {
+
+				ex.printStackTrace();
+
+			}
+//    		dataEntryService.saveIterable(list);
+//    		dataEntryService.ejecutarEtl(idSolicitud);
             
 
             redirectAttributes.addFlashAttribute("message",
