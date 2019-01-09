@@ -75,7 +75,7 @@ public final class OracleSqlLoader {
     ) {
         return "" +
         		"OPTIONS (SKIP=1) \n" +
-                "load data infile '" + dataFileName + "'\n" +
+                "load data infile '" + dataFileName + ".txt'\n" +
                 "TRUNCATE \n" +
                 "PRESERVE BLANKS \n" +
                 "into table " + tableName + "\n" +

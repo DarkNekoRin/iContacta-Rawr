@@ -160,12 +160,15 @@ public class UploadController {
 
 			}
 //    		dataEntryService.saveIterable(list);
-//    		dataEntryService.ejecutarEtl(idSolicitud);
+
             
     		ejecutaCarga(UPLOADED_FOLDER+idSolicitud);
             redirectAttributes.addFlashAttribute("message",
                     "You successfully uploaded '" + dataEntryView.getFile().getOriginalFilename() + "'");
-
+    		
+            dataEntryService.ejecutarEtl(idSolicitud);
+    		
+    		
         } catch (IOException e) {
             e.printStackTrace();
         }
