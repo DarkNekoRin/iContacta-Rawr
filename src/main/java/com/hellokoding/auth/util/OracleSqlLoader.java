@@ -78,9 +78,6 @@ public final class OracleSqlLoader {
                 "load data infile '" + dataFileName + "'\n" +
                 "TRUNCATE \n" +
                 "PRESERVE BLANKS \n" +
-                "badfile '" + badFileName + "'\n" +
-                "discardfile '" + discardFileName + "'\n" +
-                "append \n" +
                 "into table " + tableName + "\n" +
                 "fields terminated by '|'" + "\n" + 
                 "TRAILING NULLCOLS " + "\n" + 
