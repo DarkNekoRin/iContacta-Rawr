@@ -32,6 +32,10 @@
 	<!-- Dropify -->
 	<link rel="stylesheet" href="${contextPath}/assets/plugin/dropify/css/dropify.min.css">
 
+	<!-- Data Tables -->
+	<link rel="stylesheet" href="${contextPath}/assets/plugin/datatables/media/css/dataTables.bootstrap.min.css">
+
+
 	<!-- Dark Themes -->
 	<link rel="stylesheet" href="${contextPath}/assets/styles/style-dark.min.css">
 		<!-- Toastr -->

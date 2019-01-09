@@ -1,8 +1,23 @@
 /**
  * 
  */
+
+
 $(document ).ready(function() {	
-	 $(".alert").hide();
+	//inicio();
+
+	$("#divFormulario").show();$("#divTblOutput").hide();
+	
+	$(".alert").hide();
+	$('#exportar').click(function(){	
+		
+	});
+	
+	
+	
+	
+	
+	
 	$('#procesar').click(function(){	
 		console.log("procesar1"); 
 
@@ -43,12 +58,16 @@ $(document ).ready(function() {
                 contentType: false,
                 cache: false,
                 timeout: 600000,
-                success: function (data) {
+                success: function (data) {                	
                     console.log("SUCCESS : ", data);
                     $("#procesar").prop("disabled", false);
                     $(".sweet-alert").hide();
                     $(".sweet-overlay").hide();
-                    window.location = "uploadStatus";
+                    //$('#idSolicitud').val(data.values.idSolicitud);
+                    //procesoCorrecto();
+                    //window.location = "uploadStatus";
+                    table.ajax.reload();
+                    $("#divFormulario").hide();$("#divTblOutput").show();
                 },
                 error: function (e) {
                     console.log("ERROR : ", e);
@@ -84,5 +103,35 @@ $(document ).ready(function() {
         
 	});
 	
+	var table= $('#tblOutput').DataTable( {
+    	"bJQueryUI":true,
+        "processing": true,
+        "responsive": true,
+        "bSort":false,
+        "bPaginate":true,
+        "dom": '<"row" <"col-sm-12" t> ><"row" <"col-sm-3"l> <"col-sm-4"i> <"col-sm-5"p>>',
+        "iDisplayLength": 10,
+        "sPaginationType" : 'full_numbers',
+        "ajax": {
+            "url": './mostrarSalida',
+            "type":'GET',
+            "data": function (d) {
+            	console.log("llamadaAjax"); 
+                d.filtroIdSolicitud = $('#idSolicitud').val();
+            }
+          },
+        "serverSide": true,
+        "columns": [
+            { "data": "tipoDocumento" },
+            { "data": "documento" },
+            { "data": "apePaterno",render: function (data, type, row ) {            		
+                return row.apePaterno +" "+row.apeMaterno+" "+row.primerNombre +" "+row.segundoNombre;
+            } },
+            { "data": "numCelular1" },
+            { "data": "numCelular2" },
+            { "data": "numCelular3" }
+        ],
+        "select": true
+    } );
 	
 })

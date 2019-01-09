@@ -192,12 +192,9 @@
 <!-- /#message-popup -->
 <div id="wrapper">
 	<div class="main-content">
-		<div class="row small-spacing">
-
+		<div class="row small-spacing" id="divFormulario">
 			<!-- /.col-xs-12 -->
-
-
-  <form data-toggle="validator" id="fileUploadForm" method="POST" action="/upload?${_csrf.parameterName}=${_csrf.token}" enctype="multipart/form-data">  
+  				<form data-toggle="validator" id="fileUploadForm" method="POST" action="/upload?${_csrf.parameterName}=${_csrf.token}" enctype="multipart/form-data">  
     			<div class="col-md-6 col-xs-12">
 				<div class="box-content">
 					<h4 class="box-title">Limit File Size</h4>
@@ -213,6 +210,7 @@
 						</ul>
 						<!-- /.sub-menu -->
 					</div>
+					<input type="hidden" id="idSolicitud" name="idSolicitud" value="B28219201812271823"/>
 					<!-- /.dropdown js__dropdown -->
 					<input type="file" name="file" id="input-file-to-destroy" class="dropify" data-allowed-formats="portrait square" data-max-file-size="2M" data-max-height="2000" required/>
                     <p class="help margin-top-10">Only portrait or square images, 2M max and 2000px max-height.</p>
@@ -228,12 +226,14 @@
 					<button type="button" id="procesar" class="btn btn-primary btn-rounded waves-effect waves-light">Procesar</button>
 				</div>
 				</div>
-</form>			<!-- /.col-md-6 col-xs-12 -->
+		</form>			<!-- /.col-md-6 col-xs-12 -->
 		</div>
 		
-		<div class="col-xs-12">
+		<div class="row small-spacing" id="divTblOutput">			
+			<div class="col-xs-12" >
 				<div class="box-content">
-					<h4 class="box-title">Row grouping</h4>
+					<h4 class="box-title">Default</h4>
+					<button id="exportar" type="button" class="btn btn-success btn-sm waves-effect waves-light">Exportar</button>
 					<!-- /.box-title -->
 					<div class="dropdown js__drop_down">
 						<a href="#" class="dropdown-icon glyphicon glyphicon-option-vertical js__drop_down_button"></a>
@@ -247,35 +247,29 @@
 						<!-- /.sub-menu -->
 					</div>
 					<!-- /.dropdown js__dropdown -->
-					<table id="example-row-grouping" class="table table-striped table-bordered display" style="width:100%">
+					<table id="tblOutput" class="table table-striped table-bordered displa" style="width:100%">
 						<thead>
 							<tr>
-								<th>Name</th>
-								<th>Position</th>
-								<th>Office</th>
-								<th>Age</th>
-								<th>Start date</th>
-								<th>Salary</th>
+								<th>TipDoc</th>
+								<th>documento</th>
+								<th>Nombres</th>
+								<th>numCelular1</th>
+								<th>numCelular2</th>
+								<th>numCelular3</th>
 							</tr>
 						</thead>
-						<tfoot>
-							<tr>
-								<th>Name</th>
-								<th>Position</th>
-								<th>Office</th>
-								<th>Age</th>
-								<th>Start date</th>
-								<th>Salary</th>
-							</tr>
-						</tfoot>
-						<tbody>
-
-						</tbody>
 					</table>
 				</div>
 				<!-- /.box-content -->
 			</div>
 			<!-- /.col-xs-12 -->
+			
+			
+			
+		</div>
+		
+		
+
 		
 		
 		
@@ -321,6 +315,10 @@
 	<script src="${contextPath}/assets/scripts/toastr.demo.min.js"></script>
 
 	<script src="${contextPath}/assets/scripts/main.js"></script>
+	
+	<!-- Data Tables -->
+	<script src="${contextPath}/assets/plugin/datatables/media/js/jquery.dataTables.min.js"></script>
+	
 	<script src="${contextPath}/resources/js/subirarchivo.js"></script>
 </body>
 </html>
