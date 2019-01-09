@@ -63,7 +63,7 @@ $(document ).ready(function() {
                     $("#procesar").prop("disabled", false);
                     $(".sweet-alert").hide();
                     $(".sweet-overlay").hide();
-                    //$('#idSolicitud').val(data.values.idSolicitud);
+                    $('#idSolicitud').val(data.values.idSolicitud);
                     //procesoCorrecto();
                     //window.location = "uploadStatus";
                     table.ajax.reload();
