@@ -272,6 +272,8 @@ table.dataTable td {
  * Control feature layout
  */
 .dataTables_wrapper {
+	 font-family: tahoma;
+    font-size: 11px;
   position: relative;
   clear: both;
   *zoom: 1;

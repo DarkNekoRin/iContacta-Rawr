@@ -2,6 +2,7 @@ package com.ibk.rawr.web;
 
 
 import java.io.BufferedWriter;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -18,20 +19,22 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Scanner;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -42,6 +45,7 @@ import com.ibk.rawr.model.Respuesta;
 import com.ibk.rawr.service.DataEntryService;
 import com.ibk.rawr.service.MaestraDataEntryService;
 import com.ibk.rawr.service.UserService;
+import com.ibk.rawr.util.ExcelGenerator;
 import com.ibk.rawr.util.OracleSqlLoader;
 import com.ibk.rawr.util.OracleSqlLoader.ExitCode;
 import com.ibk.rawr.util.OracleSqlLoader.Results;
@@ -141,8 +145,8 @@ public class UploadController {
 
 //    		dataEntryService.saveIterable(list);
             
-    	  ejecutaCarga(UPLOADED_FOLDER+idSolicitud);               		
-          dataEntryService.ejecutarEtl(idSolicitud);
+//    	  ejecutaCarga(UPLOADED_FOLDER+idSolicitud);               		
+//          dataEntryService.ejecutarEtl(idSolicitud);
      		
              //eliminar archivo original
  		 File original=new File(path.toString());
@@ -183,12 +187,7 @@ public class UploadController {
         return "uploadStatus";
     }
     
-    public static List<String> splitComa(String str){
-        return Stream.of(str.split(","))
-          .map (elem -> new String(elem))
-          .collect(Collectors.toList());
-    }
-    
+   
     public void ejecutaCarga(String path) {
     	Connection conn;
 		try {
@@ -219,9 +218,25 @@ public class UploadController {
 		Contenido resp=new Contenido();
 		resp.setData(new ArrayList<MaestraDataEntry>());
 		if (httpRequest.getParameter("filtroIdSolicitud") != null && httpRequest.getParameter("filtroIdSolicitud").length()>0 ){		
-			resp.setData(maestraDataEntryService.listarPorIdSolicitud(httpRequest.getParameter("filtroIdSolicitud")));
+			resp.setData(maestraDataEntryService.listarTo10PorIdSolicitud("B28219201812271823"));
 		}
 		return resp;
 	}
+
+    
+    @GetMapping(value = "/download/output.xlsx")
+    public ResponseEntity<InputStreamResource> excelCustomersReport(@RequestParam("idSolicitud") String idSolicitud  ) throws IOException {
+    	List<MaestraDataEntry> maestraData =maestraDataEntryService.listarPorIdSolicitud(idSolicitud);
+		
+		ByteArrayInputStream in = ExcelGenerator.maestraDataEntrysToExcel(maestraData);
+
+		HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Disposition", "attachment; filename="+idSolicitud+".xlsx");
+		
+		 return ResponseEntity
+	                .ok()
+	                .headers(headers)
+	                .body(new InputStreamResource(in));
+    }
 
 }

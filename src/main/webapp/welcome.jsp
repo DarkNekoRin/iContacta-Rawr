@@ -2,7 +2,7 @@
 <div class="fixed-navbar">
 	<div class="pull-left">
 		<button type="button" class="menu-mobile-button glyphicon glyphicon-menu-hamburger js__menu_mobile"></button>
-		<h1 class="page-title">Multiple File Upload</h1>
+		<h1 class="page-title">Carga de Datos</h1>
 		<!-- /.page-title -->
 	</div>
 	<!-- /.pull-left -->
@@ -197,20 +197,8 @@
   				<form data-toggle="validator" id="fileUploadForm" method="POST" action="/upload?${_csrf.parameterName}=${_csrf.token}" enctype="multipart/form-data">  
     			<div class="col-md-6 col-xs-12">
 				<div class="box-content">
-					<h4 class="box-title">Limit File Size</h4>
-					<!-- /.box-title -->
-					<div class="dropdown js__drop_down">
-						<a href="#" class="dropdown-icon glyphicon glyphicon-option-vertical js__drop_down_button"></a>
-						<ul class="sub-menu">
-							<li><a href="#">Action</a></li>
-							<li><a href="#">Another action</a></li>
-							<li><a href="#">Something else there</a></li>
-							<li class="split"></li>
-							<li><a href="#">Separated link</a></li>
-						</ul>
-						<!-- /.sub-menu -->
-					</div>
-					<input type="hidden" id="idSolicitud" name="idSolicitud" value="B28219201812271823"/>
+					<h4 class="box-title">Subir Archivo</h4>
+					<input type="hidden" id="idSolicitud" name="idSolicitud"/>
 					<!-- /.dropdown js__dropdown -->
 					<input type="file" name="file" id="input-file-to-destroy" class="dropify" data-allowed-formats="portrait square" data-max-file-size="2M" data-max-height="2000" required/>
                     <p class="help margin-top-10">Only portrait or square images, 2M max and 2000px max-height.</p>
@@ -224,6 +212,7 @@
 					<div class="switch success"><input type="checkbox" name="direccion" checked id="switch-3"><label for="switch-3">Direcci&oacute;n</label></div>
 					<!-- /.box-content -->
 					<button type="button" id="procesar" class="btn btn-primary btn-rounded waves-effect waves-light">Procesar</button>
+								
 				</div>
 				</div>
 		</form>			<!-- /.col-md-6 col-xs-12 -->
@@ -232,8 +221,10 @@
 		<div class="row small-spacing" id="divTblOutput">			
 			<div class="col-xs-12" >
 				<div class="box-content">
-					<h4 class="box-title">Default</h4>
-					<button id="exportar" type="button" class="btn btn-success btn-sm waves-effect waves-light">Exportar</button>
+					<h4 class="box-title" id="idTituloGrilla"></h4>
+			
+					<a class='aLink' href="#"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Exportar </a>
+						
 					<!-- /.box-title -->
 					<div class="dropdown js__drop_down">
 						<a href="#" class="dropdown-icon glyphicon glyphicon-option-vertical js__drop_down_button"></a>
@@ -253,9 +244,14 @@
 								<th>TipDoc</th>
 								<th>documento</th>
 								<th>Nombres</th>
-								<th>numCelular1</th>
-								<th>numCelular2</th>
-								<th>numCelular3</th>
+								<th>numCelular1</th>													
+								<th>Numero Telefono</th>
+								<th>Email 1</th>								
+								<th>Direccion</th>
+								<th>Distrito</th>
+								<th>Provincia</th>
+								<th>Departamento</th>
+								<th>LPDP</th>
 							</tr>
 						</thead>
 					</table>
@@ -263,18 +259,13 @@
 				<!-- /.box-content -->
 			</div>
 			<!-- /.col-xs-12 -->
-			
-			
-			
 		</div>
 		
+		<div class="alert alert-success" id="idOK">
+	   	 <strong>Success!</strong> Procesando...
+	 	</div>
 		
-
-		
-		
-		
-		
-		<div class="alert alert-danger">
+		<div class="alert alert-danger" id="idError">
     		<strong>Danger!</strong> ${error}
   		</div>
 		<!-- /.row small-spacing -->		

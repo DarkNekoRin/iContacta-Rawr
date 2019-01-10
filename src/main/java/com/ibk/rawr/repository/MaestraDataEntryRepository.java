@@ -8,4 +8,5 @@ import com.ibk.rawr.entity.MaestraDataEntry;
 
 public interface MaestraDataEntryRepository extends JpaRepository<MaestraDataEntry, Long> {
 	public List<MaestraDataEntry> findTop10ByIdSolicitudOrderById(String idSolicitud);
+	public List<MaestraDataEntry> findByIdSolicitudOrderById(String idSolicitud);
 }
