@@ -4,19 +4,54 @@
 
 
 $(document ).ready(function() {	
-	//inicio();
+	$("#divFormulario").show();$("#divTblOutput").hide();	
+	$("#idOK").hide();
+	$("#idError").hide();
+	
+	
+	$(".alert").hide();	
+	$('#idSolicitud').val("");
+	$('.aLink').attr('href','#');
+	
+	var table= $('#tblOutput').DataTable( {
+    	"bJQueryUI":true,
+        "processing": true,
+        "responsive": true,
+        "bSort":false,
+        "bPaginate":false,
+        //"scrollCollapse": true,
+        //"scrollY":        "300px",
+        "dom": '<"row" <"col-sm-12" t> ><"row" <"col-sm-3"l> <"col-sm-4"i> <"col-sm-5"p>>',
+        "iDisplayLength": 10,
+        "sPaginationType" : 'full_numbers',
+        "ajax": {
+            "url": './mostrarSalida',
+            "type":'GET',
+            "data": function (d) {
+            	console.log("llamadaAjax"); 
+                d.filtroIdSolicitud = $('#idSolicitud').val();
+            }
+          },
+        "serverSide": true,
+        "columns": [
+            { "data": "tipoDocumento" },
+            { "data": "documento" },
+            { "data": "apePaterno",render: function (data, type, row ) {            		
+                return row.apePaterno +" "+row.apeMaterno+" "+row.primerNombre +" "+row.segundoNombre;
+            } },
+            { "data": "numCelular1" },
+            { "data": "numTelefono" },
+            { "data": "email1" },
+            { "data": "direccion" },
+            { "data": "distrito" },
+            { "data": "provincia" },
+            { "data": "departamento" },          
+            { "data": "flgLpd" }
+        ],
+        "select": true
+    } );
+	
 
-	$("#divFormulario").show();$("#divTblOutput").hide();
-	
-	$(".alert").hide();
-	$('#exportar').click(function(){	
-		
-	});
-	
-	
-	
-	
-	
 	
 	$('#procesar').click(function(){	
 		console.log("procesar1"); 
@@ -41,13 +76,13 @@ $(document ).ready(function() {
     		// disabled the submit button
         	
         	
-			swal({   
-				title: "Procesando",   
-				text: "Espere.",   				
-				showConfirmButton: false
-			});
-        	
-        	
+//			swal({   
+//				title: "Procesando",   
+//				text: "Espere.",   				
+//				showConfirmButton: false
+//			});
+//        	
+        	$("#idOK").show();
         	$("#procesar").prop("disabled", true);
             $.ajax({
                 type: "POST",
@@ -61,20 +96,26 @@ $(document ).ready(function() {
                 success: function (data) {                	
                     console.log("SUCCESS : ", data);
                     $("#procesar").prop("disabled", false);
-                    $(".sweet-alert").hide();
-                    $(".sweet-overlay").hide();
+//                    $(".sweet-alert").hide();
+//                    $(".sweet-overlay").hide();
+                	$("#idOK").hide();
+                	$("#idError").hide();
+                    
+//                    $('#idSolicitud').val("B28219201812271823");
                     $('#idSolicitud').val(data.values.idSolicitud);
-                    //procesoCorrecto();
-                    //window.location = "uploadStatus";
                     table.ajax.reload();
+                    $('#idTituloGrilla').text("SOLICITUD: "+data.values.idSolicitud);
+                    $('.aLink').attr('href','/download/output.xlsx?idSolicitud='+data.values.idSolicitud);                    
                     $("#divFormulario").hide();$("#divTblOutput").show();
                 },
                 error: function (e) {
                     console.log("ERROR : ", e);
                     $("#procesar").prop("disabled", false);
-                    $(".sweet-alert").hide();
-                    $(".sweet-overlay").hide();
-                    $(".alert").show();
+//                    $(".sweet-alert").hide();
+//                    $(".sweet-overlay").hide();
+                    $("#idOK").hide();
+                    $("#idError").show();
+                    $('#idTituloGrilla').text("EROR AL CARGAR DATA");
                     
                 }
             });
@@ -101,37 +142,6 @@ $(document ).ready(function() {
     		}
         } 	
         
-	});
-	
-	var table= $('#tblOutput').DataTable( {
-    	"bJQueryUI":true,
-        "processing": true,
-        "responsive": true,
-        "bSort":false,
-        "bPaginate":true,
-        "dom": '<"row" <"col-sm-12" t> ><"row" <"col-sm-3"l> <"col-sm-4"i> <"col-sm-5"p>>',
-        "iDisplayLength": 10,
-        "sPaginationType" : 'full_numbers',
-        "ajax": {
-            "url": './mostrarSalida',
-            "type":'GET',
-            "data": function (d) {
-            	console.log("llamadaAjax"); 
-                d.filtroIdSolicitud = $('#idSolicitud').val();
-            }
-          },
-        "serverSide": true,
-        "columns": [
-            { "data": "tipoDocumento" },
-            { "data": "documento" },
-            { "data": "apePaterno",render: function (data, type, row ) {            		
-                return row.apePaterno +" "+row.apeMaterno+" "+row.primerNombre +" "+row.segundoNombre;
-            } },
-            { "data": "numCelular1" },
-            { "data": "numCelular2" },
-            { "data": "numCelular3" }
-        ],
-        "select": true
-    } );
+	});	
 	
 })
