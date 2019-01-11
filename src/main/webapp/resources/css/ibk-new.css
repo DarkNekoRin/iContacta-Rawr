@@ -1,0 +1,220 @@
+@font-face {
+    font-family: Omnes-Regular;
+    src: url("../fonts/omnes/Omnes-Regular_0.otf") format("opentype"); /* IE9 Compat Modes */
+}
+
+/*---------------------------------------------------------------------*/
+
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/*---------------------------------------------------------------------*/
+
+html,
+body {
+  background: #ffffff;
+  font-family: 'Omnes-Regular', 'Roboto', 'Inter UI' ,sans-serif;
+}
+#wrapper {
+  background: #ffffff;
+  font-family: 'Omnes-Regular', 'Roboto', 'Inter UI' ,sans-serif;
+}
+/*---------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------
+2. Header
+*/
+.header .logo {
+  background-color: #55ACED;
+}
+/*---------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------
+3. Fixed Nabar
+*/
+.fixed-navbar {
+  background: #F4FBF5;
+  color: #00AA4A ;
+}
+.fixed-navbar .ico-item {
+  color: #999;
+}
+.fixed-navbar .ico-item:hover {
+  color: #00AA4A;
+}
+.menu-mobile-button {
+  background: #dcf2df;
+  color: #00AA4A;
+}
+@media (min-width: 1025px) {
+  .searchform .button-search:hover {
+    color: #00AA4A;
+  }
+}
+/*---------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------
+4. Main Menu
+*/
+.main-menu {
+  background: #606F73;
+  color: #ffffff;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}
+.main-menu .user .name a {
+  color: #ffffff;
+}
+.main-menu .user .control-wrap > .fa {
+  color: #ffffff;
+}
+.navigation .title {
+  color: #ffffff;
+  background: #314146;
+}
+.navigation .menu a {
+  color: #a3a3a3;
+}
+.navigation .menu a i {
+  color: #ffffff;
+}
+@media (min-width: 1025px) {
+  .navigation .menu a:hover {
+    color: #ffffff;
+  }
+  .navigation .menu a:hover i {
+    color: #ffffff;
+  }
+}
+.navigation .menu > li.active > a {
+  background: #55ACED;
+  color: #ffffff;
+}
+.navigation .menu > li.current > a {
+  color: #ffffff;
+  background: #55ACED;
+}
+.navigation .menu > li.current .current > a {
+  color: #ffffff;
+}
+/*---------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------
+5. Menu Active
+*/
+@media (min-width: 800px) {
+  .menu-active .header .logo {
+    color: #2D2F36;
+  }
+  .menu-active .header .logo:before {
+    background: #55ACED	;
+  }
+  .menu-active .navigation .menu > li:hover > a {
+    background: #00AA4A;
+  }
+  .menu-active .navigation .menu .sub-menu a {
+    background: #00AA4A;
+  }
+}
+/*---------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------
+6. Box content
+*/
+.box-content {
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.05), 0 2px 2px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.05), 0 2px 2px rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.05), 0 2px 2px rgba(0, 0, 0, 0.05);
+}
+
+
+/*---------------------------------------------------------------------*/
+
+
+.btncolor {
+	color:  #ffff;	
+}
+
+.btnForm {
+  border: none;
+  width: 164px;
+  height: 45px;
+  margin: auto;
+  margin-top: 38px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: #00AA4A;
+  font-size: 15px;
+  color: #ffff;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s; }
+  .btnForm i {
+    margin-left: 10px;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0); }
+  .btnForm:hover i, .btnForm:focus i, .btnFormn:active i {
+    -webkit-animation-name: hvr-icon-wobble-horizontal;
+    animation-name: hvr-icon-wobble-horizontal;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1; }
+
+@-webkit-keyframes hvr-icon-wobble-horizontal {
+  16.65% {
+    -webkit-transform: translateX(6px);
+    transform: translateX(6px); }
+  33.3% {
+    -webkit-transform: translateX(-5px);
+    transform: translateX(-5px); }
+  49.95% {
+    -webkit-transform: translateX(4px);
+    transform: translateX(4px); }
+  66.6% {
+    -webkit-transform: translateX(-2px);
+    transform: translateX(-2px); }
+  83.25% {
+    -webkit-transform: translateX(1px);
+    transform: translateX(1px); }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0); } }
+@keyframes hvr-icon-wobble-horizontal {
+  16.65% {
+    -webkit-transform: translateX(6px);
+    transform: translateX(6px); }
+  33.3% {
+    -webkit-transform: translateX(-5px);
+    transform: translateX(-5px); }
+  49.95% {
+    -webkit-transform: translateX(4px);
+    transform: translateX(4px); }
+  66.6% {
+    -webkit-transform: translateX(-2px);
+    transform: translateX(-2px); }
+  83.25% {
+    -webkit-transform: translateX(1px);
+    transform: translateX(1px); }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0); } }
+
+  .btnForm {
+    margin-top: 60px; } }
+    
+    

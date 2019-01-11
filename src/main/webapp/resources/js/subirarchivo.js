@@ -2,7 +2,6 @@
  * 
  */
 
-
 $(document ).ready(function() {	
 	$("#divFormulario").show();$("#divTblOutput").hide();	
 
@@ -71,11 +70,11 @@ $(document ).ready(function() {
     		// If you want to add an extra field for the FormData
             //data.append("CustomField", "This is some extra data, testing");
     		// disabled the submit button
-        	
-        	
+        	        		 
 			swal({   
 				title: "Procesando",   
-				text: "Espere.",   				
+				text: "Espere. "    ,	
+				showLoaderOnConfirm: true ,
 				showConfirmButton: false
 			});
 //        	
@@ -131,9 +130,9 @@ $(document ).ready(function() {
                     console.log("ERROR : ", e);
                     swal.close();
                     $("#procesar").prop("disabled", false);
-                    $('#idTituloGrilla').text("EROR AL CARGAR DATA");
+                    $('#idTituloGrilla').text("ERROR AL CARGAR DATA");
                     
-                    Command: toastr["error"](e, "RAWR")
+                    Command: toastr["error"](e, "Gobierno de Datos - Interbank")
 
                     toastr.options = {
                       "closeButton": false,
@@ -156,7 +155,7 @@ $(document ).ready(function() {
                 }
             });
         }else{
-            Command: toastr["warning"]("RAWR", "Sube un archivo txt")
+            Command: toastr["warning"]("Gobierno de Datos - Interbank", "Sube un archivo .TXT")
 
     		toastr.options = {
     		  "closeButton": false,

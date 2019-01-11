@@ -216,7 +216,7 @@ public class UploadController {
 		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			logger.error("Error ejcutar en la BD: "+e.getMessage());
+			logger.error("Error ejecutar en la BD: "+e.getMessage());
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

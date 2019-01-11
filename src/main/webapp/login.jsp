@@ -69,8 +69,8 @@
 	              <input name="password"  type="password" class="form-control"  placeholder="Password"/>
 	              <span>${error}</span>
 	              <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-	              <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
-	             
+	              
+	              <button class="btncolor" type="submit">Ingresar</button>
               </div>
             
 				 <p class="message">¿No tienes cuenta? <a href="/registration">Crea tu cuenta</a></p> 

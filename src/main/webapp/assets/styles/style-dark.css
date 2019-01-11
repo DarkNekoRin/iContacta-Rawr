@@ -10,29 +10,29 @@ body {
 2. Header
 */
 .header .logo {
-  background-color: #242424;
+  background-color: #1D917A;
 }
 /*---------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------
 3. Fixed Nabar
 */
 .fixed-navbar {
-  background: #f3f3f3;
-  color: #242424;
+  background: #F4FBF5;
+  color: #1D917A ;
 }
 .fixed-navbar .ico-item {
   color: #999;
 }
 .fixed-navbar .ico-item:hover {
-  color: #242424;
+  color: #1D917A;
 }
 .menu-mobile-button {
-  background: #e7e7e7;
-  color: #242424;
+  background: #dcf2df;
+  color: #1D917A;
 }
 @media (min-width: 1025px) {
   .searchform .button-search:hover {
-    color: #242424;
+    color: #1D917A;
   }
 }
 /*---------------------------------------------------------------------*/
@@ -40,7 +40,7 @@ body {
 4. Main Menu
 */
 .main-menu {
-  background: #242424;
+  background: #1D917A;
   color: #ffffff;
   box-shadow: none;
   -moz-box-shadow: none;
@@ -54,7 +54,7 @@ body {
 }
 .navigation .title {
   color: #ffffff;
-  background: #1b1b1b;
+  background: #1e8974;
 }
 .navigation .menu a {
   color: #a3a3a3;
@@ -71,12 +71,12 @@ body {
   }
 }
 .navigation .menu > li.active > a {
-  background: #1b1b1b;
+  background: #1e8974;
   color: #ffffff;
 }
 .navigation .menu > li.current > a {
   color: #ffffff;
-  background: #1b1b1b;
+  background: #1e8974;
 }
 .navigation .menu > li.current .current > a {
   color: #ffffff;
@@ -87,16 +87,16 @@ body {
 */
 @media (min-width: 800px) {
   .menu-active .header .logo {
-    color: #242424;
+    color: #1D917A;
   }
   .menu-active .header .logo:before {
-    background: #242424;
+    background: #1D917A;
   }
   .menu-active .navigation .menu > li:hover > a {
-    background: #1b1b1b;
+    background: #1e8974;
   }
   .menu-active .navigation .menu .sub-menu a {
-    background: #1b1b1b;
+    background: #1e8974;
   }
 }
 /*---------------------------------------------------------------------*/
