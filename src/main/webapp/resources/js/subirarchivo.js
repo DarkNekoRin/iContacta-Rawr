@@ -5,10 +5,7 @@
 
 $(document ).ready(function() {	
 	$("#divFormulario").show();$("#divTblOutput").hide();	
-	$("#idOK").hide();
-	$("#idError").hide();
-	
-	
+
 	$(".alert").hide();	
 	$('#idSolicitud').val("");
 	$('.aLink').attr('href','#');
@@ -76,13 +73,12 @@ $(document ).ready(function() {
     		// disabled the submit button
         	
         	
-//			swal({   
-//				title: "Procesando",   
-//				text: "Espere.",   				
-//				showConfirmButton: false
-//			});
+			swal({   
+				title: "Procesando",   
+				text: "Espere.",   				
+				showConfirmButton: false
+			});
 //        	
-        	$("#idOK").show();
         	$("#procesar").prop("disabled", true);
             $.ajax({
                 type: "POST",
@@ -93,30 +89,70 @@ $(document ).ready(function() {
                 contentType: false,
                 cache: false,
                 timeout: 600000,
-                success: function (data) {                	
-                    console.log("SUCCESS : ", data);
-                    $("#procesar").prop("disabled", false);
-//                    $(".sweet-alert").hide();
-//                    $(".sweet-overlay").hide();
-                	$("#idOK").hide();
-                	$("#idError").hide();
-                    
-//                    $('#idSolicitud').val("B28219201812271823");
-                    $('#idSolicitud').val(data.values.idSolicitud);
-                    table.ajax.reload();
-                    $('#idTituloGrilla').text("SOLICITUD: "+data.values.idSolicitud);
-                    $('.aLink').attr('href','/download/output.xlsx?idSolicitud='+data.values.idSolicitud);                    
-                    $("#divFormulario").hide();$("#divTblOutput").show();
+                success: function (data) {  
+                	 swal.close();
+                	if(data.estado){
+                        console.log("SUCCESS : ", data);
+                        $("#procesar").prop("disabled", false);
+                    	//data.values.idSolicitud="B28219201812271823";
+                        $('#idSolicitud').val(data.values.idSolicitud);
+                        table.ajax.reload();
+                        $('#idTituloGrilla').text("SOLICITUD: "+data.values.idSolicitud);
+                        $('.aLink').attr('href','/download/output.xlsx?idSolicitud='+data.values.idSolicitud);                    
+                        $("#divFormulario").hide();$("#divTblOutput").show();
+                	}else{                  
+                       
+                        $("#procesar").prop("disabled", false);
+                        
+                        Command: toastr["error"](data.mensaje, "RAWR")
+
+                        toastr.options = {
+                          "closeButton": false,
+                          "debug": false,
+                          "newestOnTop": false,
+                          "progressBar": false,
+                          "rtl": false,
+                          "positionClass": "toast-top-right",
+                          "preventDuplicates": false,
+                          "onclick": null,
+                          "showDuration": 300,
+                          "hideDuration": 1000,
+                          "timeOut": 5000,
+                          "extendedTimeOut": 1000,
+                          "showEasing": "swing",
+                          "hideEasing": "linear",
+                          "showMethod": "fadeIn",
+                          "hideMethod": "fadeOut"
+                        }  
+                	}
+
                 },
                 error: function (e) {
                     console.log("ERROR : ", e);
+                    swal.close();
                     $("#procesar").prop("disabled", false);
-//                    $(".sweet-alert").hide();
-//                    $(".sweet-overlay").hide();
-                    $("#idOK").hide();
-                    $("#idError").show();
                     $('#idTituloGrilla').text("EROR AL CARGAR DATA");
                     
+                    Command: toastr["error"](e, "RAWR")
+
+                    toastr.options = {
+                      "closeButton": false,
+                      "debug": false,
+                      "newestOnTop": false,
+                      "progressBar": false,
+                      "rtl": false,
+                      "positionClass": "toast-top-right",
+                      "preventDuplicates": false,
+                      "onclick": null,
+                      "showDuration": 300,
+                      "hideDuration": 1000,
+                      "timeOut": 5000,
+                      "extendedTimeOut": 1000,
+                      "showEasing": "swing",
+                      "hideEasing": "linear",
+                      "showMethod": "fadeIn",
+                      "hideMethod": "fadeOut"
+                    }                    
                 }
             });
         }else{

@@ -260,14 +260,7 @@
 			</div>
 			<!-- /.col-xs-12 -->
 		</div>
-		
-		<div class="alert alert-success" id="idOK">
-	   	 <strong>Success!</strong> Procesando...
-	 	</div>
-		
-		<div class="alert alert-danger" id="idError">
-    		<strong>Danger!</strong> ${error}
-  		</div>
+
 		<!-- /.row small-spacing -->		
 		<footer class="footer">
 			<ul class="list-inline">

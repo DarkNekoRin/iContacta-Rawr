@@ -49,10 +49,11 @@ import com.ibk.rawr.util.ExcelGenerator;
 import com.ibk.rawr.util.OracleSqlLoader;
 import com.ibk.rawr.util.OracleSqlLoader.ExitCode;
 import com.ibk.rawr.util.OracleSqlLoader.Results;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 @Controller
 public class UploadController {
-
+	private static final Logger logger = LoggerFactory.getLogger(UploadController.class);
 	@Autowired
 	DataSource dataSource;
     @Value("${spring.datasource.username}")
@@ -80,7 +81,7 @@ public class UploadController {
     @PostMapping("/upload")
     public @ResponseBody Respuesta singleFileUpload(@ModelAttribute DataEntryView dataEntryView ,
                                    RedirectAttributes redirectAttributes) {
-
+    	logger.info("Inicio Carga Archivo");	
     	Respuesta resp = new Respuesta();
 		
         if (dataEntryView.getFile().isEmpty()) {
@@ -137,6 +138,7 @@ public class UploadController {
     			}
 
     		} catch (IOException e) {
+    			 logger.error("Error al procesar el archivo");
     			 resp.setMensaje("Error al procesar el archivo");
     			 resp.setEstado(false);
 	             resp.setResponseCode(-1);
@@ -157,12 +159,18 @@ public class UploadController {
          Map<String, String> map=new HashMap<>();
          map.put("idSolicitud", idSolicitud);
          resp.setValues(map);
-         	
-        } catch (Exception e) {          
+         logger.info("Procesado Correctamente");	
+        }catch(java.lang.ArrayIndexOutOfBoundsException ex) {
             resp.setEstado(false);
             resp.setResponseCode(-1);
-            resp.setMensaje(e.getMessage());
-            e.printStackTrace();
+            resp.setMensaje("El formato de archivo no es el correcto");
+            logger.error("El formato de archivo no es el correcto");
+        }
+        catch (Exception e) {          
+            resp.setEstado(false);
+            resp.setResponseCode(-1);
+            resp.setMensaje("Error en el Proceso");
+            logger.error("Error en el Proceso");
         }finally {
     		try {
 
@@ -174,7 +182,10 @@ public class UploadController {
 
 			} catch (IOException ex) {
 
-				ex.printStackTrace();
+	            resp.setEstado(false);
+	            resp.setResponseCode(-1);
+	            resp.setMensaje("Error en el Proceso");
+	            logger.error("Error en el Proceso");
 
 			}
 		}
@@ -200,12 +211,13 @@ public class UploadController {
 	        // ========================================================================================================
 	        if (results.exitCode != ExitCode.SUCCESS) {
 	                System.err.println("Failed. Exit code: " + results.exitCode + ". See log file: " + results.logFile);
-//	                System.exit(1);
+	                logger.error("Error al ejcutar la carga via CTL: " + results.exitCode + ". See log file: " + results.logFile);
 	        }
 		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("Error ejcutar en la BD: "+e.getMessage());
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
