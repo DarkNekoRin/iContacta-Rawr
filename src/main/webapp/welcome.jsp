@@ -205,11 +205,11 @@
 				
 				<!-- /.dropdown js__dropdown -->
 					<p>Datos Necesarios</p>
-					<div class="switch success"><input type="checkbox" name="telefono" checked id="switch-1"><label for="switch-1">Tel&eacute;fono</label></div>
+					<div class="switch success"><input type="checkbox" name="telefono" id="switch-1"><label for="switch-1">Tel&eacute;fono</label></div>
 					<!-- /.switch -->
-					<div class="switch success"><input type="checkbox" name="email" checked id="switch-2"><label for="switch-2">Email</label></div>
+					<div class="switch success"><input type="checkbox" name="email" id="switch-2"><label for="switch-2">Email</label></div>
 					<!-- /.switch -->
-					<div class="switch success"><input type="checkbox" name="direccion" checked id="switch-3"><label for="switch-3">Direcci&oacute;n</label></div>
+					<div class="switch success"><input type="checkbox" name="direccion" id="switch-3"><label for="switch-3">Direcci&oacute;n</label></div>
 					<!-- /.box-content -->
 					<button type="button" id="procesar" class="btn btn-primary btn-rounded waves-effect waves-light">Procesar</button>
 								

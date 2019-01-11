@@ -81,45 +81,7 @@
 				<li>
 					<a class="waves-effect" href="welcome"><i class="menu-icon mdi mdi-view-dashboard"></i><span>CargaArchivo</span></a>
 				</li>
-				<li>
-					<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon mdi mdi-desktop-mac"></i><span>User Interface</span><span class="menu-arrow fa fa-angle-down"></span></a>
-					<ul class="sub-menu js__content">
-						<li><a href="ui-buttons.html">Buttons</a></li>
-						<li><a href="ui-cards.html">Cards</a></li>
-						<li><a href="ui-checkbox-radio.html">Checkboxs-Radios</a></li>
-						<li><a href="ui-components.html">Components</a></li>
-						<li><a href="ui-draggable-cards.html">Draggable Cards</a></li>
-						<li><a href="ui-modals.html">Modals</a></li>
-						<li><a href="ui-typography.html">Typography</a></li>
-					</ul>
-					<!-- /.sub-menu js__content -->
-				</li>
-				<li>
-					<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon mdi mdi-cube-outline"></i><span>Admin UI</span><span class="menu-arrow fa fa-angle-down"></span></a>
-					<ul class="sub-menu js__content">
-						<li><a href="ui-notification.html">Notification</a></li>
-						<li><a href="profile.html">Profile</a></li>
-						<li><a href="ui-range-slider.html">Range Slider</a></li>
-						<li><a href="ui-sweetalert.html">Sweet Alert</a></li>
-						<li><a href="ui-treeview.html">Tree view</a></li>
-						<li><a href="widgets.html">Widget</a></li>
-					</ul>
-					<!-- /.sub-menu js__content -->
-				</li>
-				<li>
-					<a class="waves-effect" href="calendar.html"><i class="menu-icon mdi mdi-calendar"></i><span>Calendar</span></a>
-				</li>
-				<li>
-					<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon mdi mdi-fire"></i><span>Icons</span><span class="menu-arrow fa fa-angle-down"></span></a>
-					<ul class="sub-menu js__content">
-						<li><a href="icons-font-awesome-icons.html">Font Awesome</a></li>
-						<li><a href="icons-fontello.html">Fontello</a></li>
-						<li><a href="icons-material-icons.html">Material Design Icons</a></li>
-						<li><a href="icons-material-design-iconic.html">Material Design Iconic Font</a></li>
-						<li><a href="icons-themify-icons.html">Themify Icons</a></li>
-					</ul>
-					<!-- /.sub-menu js__content -->
-				</li>
+
 				<li>
 					<a class="waves-effect" href="inbox.html"><i class="menu-icon mdi mdi-email"></i><span>Mail</span><span class="notice notice-danger">New</span></a>
 				</li>
