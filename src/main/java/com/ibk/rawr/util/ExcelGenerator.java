@@ -32,7 +32,7 @@ public class ExcelGenerator {
 		){
  
 			Sheet sheet = workbook.createSheet("MaestraDataEntry");
-			sheet.setDefaultColumnWidth(40);
+			sheet.setDefaultColumnWidth(25);
 	 
 			
 	        // create style for header cells
@@ -79,16 +79,31 @@ public class ExcelGenerator {
 				row.createCell(15).setCellValue(maestraDataEntry.getProvincia());
 				row.createCell(16).setCellValue(maestraDataEntry.getDepartamento());
 				row.createCell(17).setCellValue(maestraDataEntry.getUbigeo());
-				row.createCell(18).setCellValue(maestraDataEntry.getFlgVentaTelefono());
-				row.createCell(19).setCellValue(maestraDataEntry.getFlgPromoVentaTelefono());
-				row.createCell(20).setCellValue(maestraDataEntry.getFlgVentaEmail());
-				row.createCell(21).setCellValue(maestraDataEntry.getFlgPromoEmail());
+
 				
-//				row.createCell(18).setCellValue((maestraDataEntry.getFlgVentaTelefono()==null)?"":(maestraDataEntry.getFlgVentaTelefono()?"SI":"NO"));
-	//			row.createCell(19).setCellValue((maestraDataEntry.getFlgPromoVentaTelefono()==null)?"":(maestraDataEntry.getFlgPromoVentaTelefono()?"SI":"NO")); 
-			//	row.createCell(20).setCellValue((maestraDataEntry.getFlgVentaEmail()==null)?"":(maestraDataEntry.getFlgVentaEmail()?"SI":"NO"));
-			//	row.createCell(21).setCellValue((maestraDataEntry.getFlgPromoEmail()==null)?"":(maestraDataEntry.getFlgPromoEmail()?"SI":"NO"));
+				String flgVentaTelefono="";
+				if(maestraDataEntry.getFlgVentaTelefono()!=null) {
+					flgVentaTelefono=(maestraDataEntry.getFlgVentaTelefono()?"SI":"NO");
+				}
+				row.createCell(18).setCellValue(flgVentaTelefono);
 				
+				String flgPromoVentaTelefono="";
+				if(maestraDataEntry.getFlgPromoVentaTelefono()!=null) {
+					flgPromoVentaTelefono=(maestraDataEntry.getFlgPromoVentaTelefono()?"SI":"NO");
+				}
+				row.createCell(19).setCellValue(flgPromoVentaTelefono);
+				
+				String flgVentaEmail="";
+				if(maestraDataEntry.getFlgVentaEmail()!=null) {
+					flgVentaEmail=(maestraDataEntry.getFlgVentaEmail()?"SI":"NO");
+				}
+				row.createCell(20).setCellValue(flgVentaEmail);
+				
+				String flgPromoEmail="";
+				if(maestraDataEntry.getFlgPromoEmail()!=null) {
+					flgPromoEmail=(maestraDataEntry.getFlgPromoEmail()?"SI":"NO");
+				}
+				row.createCell(21).setCellValue(flgPromoEmail);
 				
 				row.createCell(22).setCellValue(maestraDataEntry.getFlgLpd());
 			}
