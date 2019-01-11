@@ -79,10 +79,17 @@ public class ExcelGenerator {
 				row.createCell(15).setCellValue(maestraDataEntry.getProvincia());
 				row.createCell(16).setCellValue(maestraDataEntry.getDepartamento());
 				row.createCell(17).setCellValue(maestraDataEntry.getUbigeo());
-				row.createCell(18).setCellValue((maestraDataEntry.getFlgVentaTelefono()==null)?"":(maestraDataEntry.getFlgVentaTelefono()?"SI":"NO"));
-				row.createCell(19).setCellValue((maestraDataEntry.getFlgPromoVentaTelefono()==null)?"":(maestraDataEntry.getFlgPromoVentaTelefono()?"SI":"NO")); 
-				row.createCell(20).setCellValue((maestraDataEntry.getFlgVentaEmail()==null)?"":(maestraDataEntry.getFlgVentaEmail()?"SI":"NO"));
-				row.createCell(21).setCellValue((maestraDataEntry.getFlgPromoEmail()==null)?"":(maestraDataEntry.getFlgPromoEmail()?"SI":"NO"));
+				row.createCell(18).setCellValue(maestraDataEntry.getFlgVentaTelefono());
+				row.createCell(19).setCellValue(maestraDataEntry.getFlgPromoVentaTelefono());
+				row.createCell(20).setCellValue(maestraDataEntry.getFlgVentaEmail());
+				row.createCell(21).setCellValue(maestraDataEntry.getFlgPromoEmail());
+				
+//				row.createCell(18).setCellValue((maestraDataEntry.getFlgVentaTelefono()==null)?"":(maestraDataEntry.getFlgVentaTelefono()?"SI":"NO"));
+	//			row.createCell(19).setCellValue((maestraDataEntry.getFlgPromoVentaTelefono()==null)?"":(maestraDataEntry.getFlgPromoVentaTelefono()?"SI":"NO")); 
+			//	row.createCell(20).setCellValue((maestraDataEntry.getFlgVentaEmail()==null)?"":(maestraDataEntry.getFlgVentaEmail()?"SI":"NO"));
+			//	row.createCell(21).setCellValue((maestraDataEntry.getFlgPromoEmail()==null)?"":(maestraDataEntry.getFlgPromoEmail()?"SI":"NO"));
+				
+				
 				row.createCell(22).setCellValue(maestraDataEntry.getFlgLpd());
 			}
 	 

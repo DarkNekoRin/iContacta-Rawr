@@ -20,12 +20,12 @@ public class MaestraDataEntryServiceImpl implements MaestraDataEntryService{
 
 	@Override
 	public List<MaestraDataEntry> listarPorIdSolicitud(String idSolicitud) {
-		return maestraDataEntryRepository.findTop10ByIdSolicitudOrderById(idSolicitud);
+		return maestraDataEntryRepository.findByIdSolicitudOrderById(idSolicitud);
 	}
 
 	@Override
 	public List<MaestraDataEntry> listarTo10PorIdSolicitud(String idSolicitud) {
-		return  maestraDataEntryRepository.findByIdSolicitudOrderById(idSolicitud);
+		return  maestraDataEntryRepository.findTop10ByIdSolicitudOrderById(idSolicitud);
 	}
 	
 
