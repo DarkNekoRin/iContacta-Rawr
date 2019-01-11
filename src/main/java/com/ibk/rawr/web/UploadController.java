@@ -145,8 +145,8 @@ public class UploadController {
 
 //    		dataEntryService.saveIterable(list);
             
-//    	  ejecutaCarga(UPLOADED_FOLDER+idSolicitud);               		
-//          dataEntryService.ejecutarEtl(idSolicitud);
+    	  ejecutaCarga(UPLOADED_FOLDER+idSolicitud);               		
+          dataEntryService.ejecutarEtl(idSolicitud);
      		
              //eliminar archivo original
  		 File original=new File(path.toString());
@@ -218,7 +218,7 @@ public class UploadController {
 		Contenido resp=new Contenido();
 		resp.setData(new ArrayList<MaestraDataEntry>());
 		if (httpRequest.getParameter("filtroIdSolicitud") != null && httpRequest.getParameter("filtroIdSolicitud").length()>0 ){		
-			resp.setData(maestraDataEntryService.listarTo10PorIdSolicitud("B28219201812271823"));
+			resp.setData(maestraDataEntryService.listarTo10PorIdSolicitud( httpRequest.getParameter("filtroIdSolicitud")  ));
 		}
 		return resp;
 	}
@@ -226,7 +226,7 @@ public class UploadController {
     
     @GetMapping(value = "/download/output.xlsx")
     public ResponseEntity<InputStreamResource> excelCustomersReport(@RequestParam("idSolicitud") String idSolicitud  ) throws IOException {
-    	List<MaestraDataEntry> maestraData =maestraDataEntryService.listarPorIdSolicitud(idSolicitud);
+    	List<MaestraDataEntry> maestraData =maestraDataEntryService.listarPorIdSolicitud( idSolicitud );
 		
 		ByteArrayInputStream in = ExcelGenerator.maestraDataEntrysToExcel(maestraData);
 
