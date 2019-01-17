@@ -36,8 +36,8 @@
 	<link rel="stylesheet" href="${contextPath}/assets/plugin/datatables/media/css/jquery.dataTables.css">
 	
 	<!-- IBK Themes -->
-	<link href="${contextPath}/resources/css/ibk-new.css" rel="stylesheet">
-	
+	<link rel="stylesheet" href="${contextPath}/assets/styles/ibk-new.css">
+
 		<!-- Toastr -->
 	<link rel="stylesheet" href="${contextPath}/assets/plugin/toastr/toastr.css">
 </head>
