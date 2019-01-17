@@ -92,10 +92,10 @@
 								<th>Tipo Doc</th>
 								<th>Documento</th>
 								<th>Nombres</th>
-								<th>1° Numero Cel</th>													
-								<th>Numero Telefono</th>
+								<th>1° Número Cel</th>													
+								<th>Número Telefono</th>
 								<th>1° Email</th>								
-								<th>Direccion</th>
+								<th>Dirección</th>
 								<th>Distrito</th>
 								<th>Provincia</th>
 								<th>Departamento</th>

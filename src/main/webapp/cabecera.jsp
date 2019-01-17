@@ -36,8 +36,9 @@
 	<link rel="stylesheet" href="${contextPath}/assets/plugin/datatables/media/css/jquery.dataTables.css">
 	
 	<!-- IBK Themes -->
-	<link rel="stylesheet" href="${contextPath}/assets/styles/ibk-new.css">
-
+	<link rel="stylesheet" href="${contextPath}/resources/css/ibk-new.css">
+	
+	
 		<!-- Toastr -->
 	<link rel="stylesheet" href="${contextPath}/assets/plugin/toastr/toastr.css">
 </head>
@@ -71,7 +72,7 @@
 			<div class="control-wrap js__drop_down">
 				<i class="fa fa-caret-down js__drop_down_button"></i>
 				<div class="control-list">
-					<div class="control-item"><a href="#"><i class="fa fa-user"></i> Profile</a></div>
+					<div class="control-item"><a href="#"><i class="fa fa-user"></i> Perfil</a></div>
 					<div class="control-item"><a href="#"><i class="fa fa-sign-out"></i> Log out
 									
 					</a></div>
