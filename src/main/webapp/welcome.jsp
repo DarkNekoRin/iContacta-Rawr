@@ -67,27 +67,6 @@
 						</br> 
 					</div>
 					
-
-    			<div class="col-md-6 col-xs-12">
-				<div class="box-content">
-					<h4 class="box-title">Subir Archivo</h4>
-					<input type="hidden" id="idSolicitud" name="idSolicitud"/>
-					<!-- /.dropdown js__dropdown -->
-					<input type="file" name="file" id="input-file-to-destroy" class="dropify" data-allowed-formats="portrait square" data-max-file-size="2M" data-max-height="2000" required/>
-                    <p class="help margin-top-10">Only portrait or square images, 2M max and 2000px max-height.</p>
-				
-				<!-- /.dropdown js__dropdown -->
-					<p>Datos Necesarios</p>
-					<div class="switch success"><input type="checkbox" name="telefono" id="switch-1"><label for="switch-1">Tel&eacute;fono</label></div>
-					<!-- /.switch -->
-					<div class="switch success"><input type="checkbox" name="email" id="switch-2"><label for="switch-2">Email</label></div>
-					<!-- /.switch -->
-					<div class="switch success"><input type="checkbox" name="direccion" id="switch-3"><label for="switch-3">Direcci&oacute;n</label></div>
-					<!-- /.box-content -->
-					<button type="button" id="procesar" class="btn btn-primary btn-rounded waves-effect waves-light">Procesar</button>
-								
-				</div>
-
 				</div>
 		</form>			<!-- /.col-md-6 col-xs-12 -->
 		</div>
