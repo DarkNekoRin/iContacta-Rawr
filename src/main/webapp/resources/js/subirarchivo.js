@@ -103,7 +103,7 @@ $(document ).ready(function() {
                        
                         $("#procesar").prop("disabled", false);
                         
-                        Command: toastr["error"](data.mensaje, "RAWR")
+                        Command: toastr["error"](data.mensaje, "iContacta - Interbank")
 
                         toastr.options = {
                           "closeButton": false,
@@ -132,7 +132,7 @@ $(document ).ready(function() {
                     $("#procesar").prop("disabled", false);
                     $('#idTituloGrilla').text("ERROR AL CARGAR DATA");
                     
-                    Command: toastr["error"](e, "Gobierno de Datos - Interbank")
+                    Command: toastr["error"](e, "iContacta - Interbank")
 
                     toastr.options = {
                       "closeButton": false,
@@ -155,7 +155,7 @@ $(document ).ready(function() {
                 }
             });
         }else{
-            Command: toastr["warning"]("Gobierno de Datos - Interbank", "Sube un archivo .TXT")
+            Command: toastr["warning"]("iContacta - Interbank", "Sube un archivo .TXT")
 
     		toastr.options = {
     		  "closeButton": false,

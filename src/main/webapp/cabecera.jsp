@@ -11,7 +11,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>Gobierno de Datos - Interbank</title>
+	<title>iContacta - Interbank</title>
 
 	<!-- Main Styles -->
 	<link rel="stylesheet" href="${contextPath}/assets/styles/style.css">
@@ -46,7 +46,7 @@
 <body>
 <div class="main-menu">
 	<header class="header">
-		<a href="index.html" class="logo"><i class="ico mdi mdi-cube-outline"></i>Gobierno de Datos</a>
+		<a href="index.html" class="logo"><i class="ico mdi mdi-cube-outline"></i> iContacta Interbank</a>
 		
 		<button type="button" class="button-close fa fa-times js__menu_close"></button>
 		
@@ -73,7 +73,7 @@
 				<i class="fa fa-caret-down js__drop_down_button"></i>
 				<div class="control-list">
 					<div class="control-item"><a href="#"><i class="fa fa-user"></i> Perfil</a></div>
-					<div class="control-item"><a href="#"><i class="fa fa-sign-out"></i> Log out
+					<div class="control-item "><a href="#" class="js__logout" ><i class="fa fa-sign-out "></i> Log out
 									
 					</a></div>
 				</div>

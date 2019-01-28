@@ -13,12 +13,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     
-    <title>Data Enrichment - Login </title>
+    <title>iContacta - Login </title>
     
     <meta name="description" content="">
     <meta name="author" content="">
-
-    <title>Log in with your account</title>
 
     <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
     <link href="${contextPath}/resources/css/common.css" rel="stylesheet">
@@ -40,7 +38,7 @@
 	<div class="page">
 	  <div class="container">
 	    <div class="left">
-	      <div class="logintxt">Data Enrichment </div>
+	      <div class="logintxt">iContacta - Data Enrichment </div>
 	        
 	        <div class="eula">¡Agregar datos de contacto segun las politicas del banco nunca fue más fácil! </div>
 	         
@@ -51,7 +49,7 @@
 	
 	      <div class="formfeo">
 
-            <div class="logintxt_bl">Log In </div>
+            <div class="logintxt_bl">Iniciar Sesión </div>
 
 	
 	          <!-- LOGIN-->

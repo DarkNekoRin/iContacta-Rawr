@@ -14,7 +14,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Create an account</title>
+    <title>iContacta - Crear Cuenta</title>
 
 
 	<link href="${contextPath}/resources/css/register.css" rel="stylesheet">

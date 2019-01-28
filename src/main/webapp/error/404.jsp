@@ -6,13 +6,18 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 	<meta name="description" content="">
 	<meta name="author" content="">
-
-	<title>Home</title>
-	<link rel="stylesheet" href="assets/styles/style.min.css">
+	
+	<title>Gobierno de Datos - Error 404</title>
+	
+	<link rel="stylesheet" href="${contextPath}/assets/styles/style-ibk.css">
 
 	<!-- Waves Effect -->
-	<link rel="stylesheet" href="assets/plugin/waves/waves.min.css">
+	<link rel="stylesheet" href="${contextPath}/assets/plugin/waves/waves.min.css">
 
+	<!-- IBK Themes -->
+	<link rel="stylesheet" href="${contextPath}/resources/css/ibk-new.css">
+	
+	
 </head>
 
 <body>
@@ -26,13 +31,13 @@
 						<path d="M 0 0 L 600 0 L 600 80 L 0 80 L 0 0 L 0 125 L 600 125 L 600 200 L 0 200 Z" />
 					</clipPath>
 				</defs>
-				<text x="300" y="190" style="width: 600px; height: 200px" text-anchor="middle" font-family="Lato" font-weight="700" font-size="250" fill="#505458" clip-path="url(#clip2)">4<tspan fill="#35b8e0">0</tspan>4</text>
+				<text x="300" y="190" style="width: 600px; height: 200px" text-anchor="middle" font-family="Omnes-Regular" font-weight="700" font-size="250" fill="#505458" clip-path="url(#clip2)">4<tspan fill="#00AA4A">0</tspan>4</text>
 			</svg>
-			<div class="title">PAGE NOT FOUND</div>
+			<div class="title">PÁGINA NO ENCONTRADA</div>
 		</div>
 		<h1 class="title-on-mobile">Error 404: Page not found</h1>
-		<p>It's looking like you may have taken a wrong turn. Don't worry... it happens to the best of us. You might want to check your internet connection. Here's a little tip that might help you get back on track.</p>
-		<a href="/welcome" class="btn btn-info">Return home</a>
+		<p>Lo sentimos, la página que estás buscando no existe. Te invitamos a seguir navegando. </p>
+		<a href="/welcome" class="btn btn-info">Regresar</a>
 		
 	</div>
 </div><!--/#single-wrapper -->
