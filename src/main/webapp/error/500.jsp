@@ -8,7 +8,7 @@
 	<meta name="author" content="">
 
 	
-	<title>Gobierno de Datos - Error 500</title>
+	<title>iContacta - Error 500</title>
 	
 	<link rel="stylesheet" href="${contextPath}/assets/styles/style-ibk.css">
 

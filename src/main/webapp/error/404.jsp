@@ -7,7 +7,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 	
-	<title>Gobierno de Datos - Error 404</title>
+	<title>iContacta - Error 404</title>
 	
 	<link rel="stylesheet" href="${contextPath}/assets/styles/style-ibk.css">
 
