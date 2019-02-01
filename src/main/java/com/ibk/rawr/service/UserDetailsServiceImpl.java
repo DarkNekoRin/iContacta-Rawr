@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.ibk.rawr.entity.Role;
 import com.ibk.rawr.entity.User;
 import com.ibk.rawr.repository.UserRepository;
+import com.ibk.rawr.util.Constantes;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService{
@@ -30,7 +31,11 @@ public class UserDetailsServiceImpl implements UserDetailsService{
         for (Role role : user.getRoles()){
             grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
         }
+        boolean isAccountNonLocked=true;
+        if(user.getBloqueado()) {
+        	isAccountNonLocked=false;
+        }
 
-        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), grantedAuthorities);
+        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),true,true,true,isAccountNonLocked, grantedAuthorities);
     }
 }

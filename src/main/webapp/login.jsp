@@ -63,7 +63,7 @@
              <div class="form-group ${error != null ? 'has-error' : ''}">
 	             <span>${message}</span>
 	             
-	              <input  name="username"  type="text"  class="form-control" placeholder="Username"/>
+	              <input  name="username"  type="text"  class="form-control" placeholder="Username"/ required="required">
 	              <input name="password"  type="password" class="form-control"  placeholder="Password"/>
 	              <span>${error}</span>
 	              <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
@@ -72,6 +72,7 @@
               </div>
             
 				 <p class="message">¿No tienes cuenta? <a href="/registration">Crea tu cuenta</a></p> 
+				 <p class="message">¿Olvidaste tu contrase&ntilde;a? <a href="/resetpassword">Solicitar Restablecer</a></p> 
             </form>
     </div>
           

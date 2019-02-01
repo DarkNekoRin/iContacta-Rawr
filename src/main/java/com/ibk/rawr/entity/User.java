@@ -2,6 +2,8 @@ package com.ibk.rawr.entity;
 
 import java.util.Set;
 
+import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,6 +13,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
 @Entity
@@ -18,9 +22,15 @@ import javax.persistence.Transient;
 public class User {
     private Long id;
     private String username;
+    private String nombres;
+    private String apePaterno;
+    private String apeMaterno;
     private String password;
     private String passwordConfirm;
     private Set<Role> roles;
+    private Boolean bloqueado;
+    private Boolean resetPassword;
+    private java.util.Calendar ultimaSesion;
 
 //    @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,8 +40,18 @@ public class User {
     public Long getId() {
         return id;
     }
+    @Basic
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name="FECH_ULTIMA_SESION")  
+    public java.util.Calendar getUltimaSesion() {
+		return ultimaSesion;
+	}
 
-    public void setId(Long id) {
+	public void setUltimaSesion(java.util.Calendar ultimaSesion) {
+		this.ultimaSesion = ultimaSesion;
+	}
+
+	public void setId(Long id) {
         this.id = id;
     }
 
@@ -69,4 +89,41 @@ public class User {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
+
+	@Column(name="NOMBRES")  
+	public String getNombres() {
+		return nombres;
+	}
+	public void setNombres(String nombres) {
+		this.nombres = nombres;
+	}
+	@Column(name="APE_PATERNO")  
+	public String getApePaterno() {
+		return apePaterno;
+	}
+	public void setApePaterno(String apePaterno) {
+		this.apePaterno = apePaterno;
+	}
+	 @Column(name="APE_MATERNO")  
+	public String getApeMaterno() {
+		return apeMaterno;
+	}
+	public void setApeMaterno(String apeMaterno) {
+		this.apeMaterno = apeMaterno;
+	}
+	public Boolean getResetPassword() {
+		return resetPassword;
+	}
+	@Column(name="RESET_PASSWORD")  
+	public void setResetPassword(Boolean resetPassword) {
+		this.resetPassword = resetPassword;
+	}
+	@Column(name="FLAG_BLOQUEADO")  
+	public Boolean getBloqueado() {
+		return bloqueado;
+	}
+	public void setBloqueado(Boolean bloqueado) {
+		this.bloqueado = bloqueado;
+	}
+	
 }

@@ -14,7 +14,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>iContacta - Crear Cuenta</title>
+    <title>iContacta - Solicitud Restablecer Contrase&ntilde;a</title>
 
 
 	<link href="${contextPath}/resources/css/register.css" rel="stylesheet">
@@ -37,59 +37,24 @@
 					<img src="${contextPath}/resources/img/lol.PNG" alt="">
 				</div>
 				<form:form method="POST" modelAttribute="userForm" class="form-signin">
-					<h3 class="logintxt">Crea tu Cuenta</h3>
+					<h3 class="logintxt">Solicitud Restablecer Contrase&ntilde;a</h3>
 
 					<div class="form-wrapper">
 
 				        <spring:bind path="username">
 				            <div class="form-group ${status.error ? 'has-error' : ''}">
 				                <form:input type="text" path="username" class="form-control" placeholder="Registro"
-				                            autofocus="true"></form:input>
+				                            autofocus="true" ></form:input>
 				                <form:errors path="username"></form:errors>
 				            </div>
 				        </spring:bind>
 				        				        
 					</div>
-					
-					<div class="form-wrapper">
-
-				        <spring:bind path="nombres">
-				            <div class="form-group ${status.error ? 'has-error' : ''}">
-				                <form:input type="text" path="nombres" class="form-control" placeholder="Nombres"
-				                            autofocus="true"></form:input>
-				                <form:errors path="nombres"></form:errors>
-				            </div>
-				        </spring:bind>
-				        				        
-					</div>
-					<div class="form-wrapper">
-
-				        <spring:bind path="apePaterno">
-				            <div class="form-group ${status.error ? 'has-error' : ''}">
-				                <form:input type="text" path="apePaterno" class="form-control" placeholder="Apellido Paterno"
-				                            autofocus="true"></form:input>
-				                <form:errors path="apePaterno"></form:errors>
-				            </div>
-				        </spring:bind>
-				        				        
-					</div>
-					<div class="form-wrapper">
-
-				        <spring:bind path="apeMaterno">
-				            <div class="form-group ${status.error ? 'has-error' : ''}">
-				                <form:input type="text" path="apeMaterno" class="form-control" placeholder="Apellido Materno"
-				                            autofocus="true"></form:input>
-				                <form:errors path="apeMaterno"></form:errors>
-				            </div>
-				        </spring:bind>
-				        				        
-					</div>
-
 
                     
-					<button  type="submit" >Registrar </button>
+					<button  type="submit" >Enviar </button>
 					<br>
-					 <p class="message">Ya tienes una <a href="login"> cuenta</a></p> 
+					 <p class="message"><a href="login"> regresar</a></p> 
 				</form:form>
 			</div>
 		</div>
