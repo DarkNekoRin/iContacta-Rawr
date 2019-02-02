@@ -98,11 +98,19 @@ public final class OracleSqlLoader {
             final String instance
     ) throws IOException {
         final ProcessBuilder pb = new ProcessBuilder(
+        		
+//                "sqlldr",
+//                "control=" + controlFile,
+//                "log=" + logFile,
+//                "userid=" + username + "/" + password + "@" + instance
+                
                 "sqlldr",
+                "userid=" + username + "/" + password + "@" + instance,
                 "control=" + controlFile,
                 "log=" + logFile,
-                "userid=" + username + "/" + password + "@" + instance,
-                "silent=header"
+                "DATA=" + controlFile.replaceAll(".ctl", ".txt"),
+                "ERRORS=999999"
+               
         );
         pb.directory(initialDir);
         if (stdoutLogFile != null) pb.redirectOutput(ProcessBuilder.Redirect.appendTo(new File(initialDir, stdoutLogFile)));
@@ -111,6 +119,7 @@ public final class OracleSqlLoader {
         try {
             process.waitFor(); // TODO may implement here timeout mechanism and progress monitor instead of just blocking the caller thread.
         } catch (InterruptedException ignored) {
+        	System.out.println("hhhhhhhhhhhh");
         }
 
         final int exitCode = process.exitValue();

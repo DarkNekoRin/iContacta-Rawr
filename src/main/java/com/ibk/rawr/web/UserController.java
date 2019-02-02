@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ibk.rawr.entity.User;
+import com.ibk.rawr.service.HalconCampaniaService;
 import com.ibk.rawr.service.SecurityService;
 import com.ibk.rawr.service.UserService;
 import com.ibk.rawr.util.Constantes;
@@ -35,6 +36,9 @@ public class UserController {
 
     @Autowired
     private UserValidator userValidator;
+    
+    @Autowired
+    private HalconCampaniaService  halcon;
 
     @RequestMapping(value = "/resetpassword", method = RequestMethod.GET)
     public String resetpassword(Model model) {
@@ -98,6 +102,9 @@ public class UserController {
 		@RequestParam(value = "logout", required = false) String logout, 
                 HttpServletRequest request) {
 
+//		halcon.obtenerCampania("http://s340vp22:9080/api/jsonws/formulario-dinamico-portlet.formularioregistrodinamico/get-listar-registros-fb?valor=201902_WISIN_B");
+		
+		
 		ModelAndView model = new ModelAndView();
 		if (error != null) {
 			model.addObject("error", 
@@ -147,12 +154,13 @@ public class UserController {
     }
     
     @RequestMapping(value = "/cambiarpassword", method = RequestMethod.POST)
-    public String cambiarpassword(@ModelAttribute("userFormC") User userForm, BindingResult bindingResult, Model model) {
-        User userSecurity = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();            
+    public String cambiarpassword(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model) {
+    	org.springframework.security.core.userdetails.User userSecurity = (org.springframework.security.core.userdetails.User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();            
         com.ibk.rawr.entity.User user=userService.findByUsername(userSecurity.getUsername()); 
+        userForm.setUsername(userSecurity.getUsername());
         user.setPassword(userForm.getPassword());
         user.setPasswordConfirm(userForm.getPasswordConfirm());
-        userValidator.validate(user, bindingResult);
+        userValidator.validateCambioPasword(user, bindingResult);
 
         logger.info("Inicio cambiarpassword");
         if (bindingResult.hasErrors()) {

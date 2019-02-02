@@ -30,7 +30,7 @@
     			
    
     			<div class="col-md-12 ">
-    			 			<h3 class="box-title">Enrequecimiento de Datos </h3>
+    			 			<h3 class="box-title">Enriquecimiento de Datos </h3>
     								</br>
 		    		<div class="col-md-8 col-xs-12">						
 						<div class="box-content">
@@ -40,8 +40,8 @@
 							
 							<!-- /.dropdown js__dropdown -->
 							<input type="file" name="file" id="input-file-to-destroy" class="dropify" data-allowed-formats="portrait square" data-max-file-size="2M" data-max-height="2000" required/>
-		                    <p class="help margin-top-10">Se acepta dos campos Tipdoc y CodDoc. </br> 
-		                     El formato debe ser delimitado por comas.	
+		                    <p class="help margin-top-10">Se acepta dos campos <b>Tipdoc y CodDoc.</b> </br> 
+		                     El formato debe ser delimitado por <b>comas</b>.	
 		                    </br> El peso máximo es de 2M. </p>
 							</br> 
 						<!-- /.dropdown js__dropdown -->
