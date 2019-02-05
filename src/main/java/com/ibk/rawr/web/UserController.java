@@ -1,5 +1,8 @@
 package com.ibk.rawr.web;
 
+import java.util.Calendar;
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -92,7 +95,7 @@ public class UserController {
         userService.save(userForm);
 //      securityService.autologin(userForm.getUsername(), userForm.getPasswordConfirm());
         model.addAttribute("username", userForm.getUsername());
-        model.addAttribute("titulo", "FELICITACIONES");
+        model.addAttribute("titulo", "FELICITACIONES ");
         return "solicitud";
     }
     
@@ -144,7 +147,8 @@ public class UserController {
     	 if(user.getResetPassword()!=null && user.getResetPassword()) {
     		 return "redirect:/cambiarpassword"; 
     	 }
-    	
+    	 user.setUltimaSesion(Calendar.getInstance());
+    	 userService.update(user);    	
         return "welcome";
     }
     @RequestMapping(value = "/cambiarpassword", method = RequestMethod.GET)
@@ -168,7 +172,7 @@ public class UserController {
         }
         user.setResetPassword(false);
         userService.save(user);
-        securityService.autologin(userForm.getUsername(), userForm.getPasswordConfirm());
+        //securityService.autologin(userForm.getUsername(), userForm.getPasswordConfirm());
         return "redirect:/welcome";
     }
 }

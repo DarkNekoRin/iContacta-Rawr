@@ -95,7 +95,9 @@
 				<li>
 					<a class="waves-effect" href="welcome"><i class="menu-icon mdi mdi-account-star-variant"></i><span> Enrequecimiento </span> <span class="notice notice-danger">New</span></a>
 				</li>
-
+				<li>
+					<a class="waves-effect" href="campania"><i class="menu-icon mdi mdi-account-star-variant"></i><span> Campa&ntilde;a </span></a>
+				</li>
 
 			</ul>
 		</div>

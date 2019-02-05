@@ -43,6 +43,14 @@ a:hover {
 :focus {
   outline: none; }
 
+.apachurrame{
+  background: #00AA4A;
+  font-size: 15px;
+  color: #fff;
+  vertical-align: middle;	
+}
+
+
 .wrapper {
   min-height: 100vh;
   background-size: cover;

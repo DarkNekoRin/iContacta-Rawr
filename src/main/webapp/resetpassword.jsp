@@ -37,10 +37,12 @@
 					<img src="${contextPath}/resources/img/lol.PNG" alt="">
 				</div>
 				<form:form method="POST" modelAttribute="userForm" class="form-signin">
-					<h3 class="logintxt">Solicitud Restablecer Contrase&ntilde;a</h3>
+					<h3 class="logintxt">Restablecer Contrase&ntilde;a</h3>
 
 					<div class="form-wrapper">
-
+						<br>
+						<p>Para restablecer su contraseña, ingrese su registro.  </p>
+						<br> <br>
 				        <spring:bind path="username">
 				            <div class="form-group ${status.error ? 'has-error' : ''}">
 				                <form:input type="text" path="username" class="form-control" placeholder="Registro"
@@ -51,10 +53,11 @@
 				        				        
 					</div>
 
-                    
+                    <br>
 					<button  type="submit" >Enviar </button>
 					<br>
-					 <p class="message"><a href="login"> regresar</a></p> 
+					 <p class="message">Ya tienes una <a href="login"> cuenta</a></p> 
+					
 				</form:form>
 			</div>
 		</div>
