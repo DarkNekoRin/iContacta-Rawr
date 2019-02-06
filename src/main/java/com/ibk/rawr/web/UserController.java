@@ -89,7 +89,7 @@ public class UserController {
         userService.save(userForm);
 //      securityService.autologin(userForm.getUsername(), userForm.getPasswordConfirm());
         model.addAttribute("username", userForm.getUsername());
-        model.addAttribute("titulo", "FELICITACIONES");
+        model.addAttribute("titulo", "FELICITACIONES ");
         return "solicitud";
     }
     
@@ -98,6 +98,7 @@ public class UserController {
                 @RequestParam(value = "error", required = false) String error,
 		@RequestParam(value = "logout", required = false) String logout, 
                 HttpServletRequest request) {
+
 		ModelAndView model = new ModelAndView();
 		if (error != null) {
 			model.addObject("error", 
@@ -162,7 +163,7 @@ public class UserController {
         }
         user.setResetPassword(false);
         userService.save(user);
-        //securityService.autologin(userForm.getUsername(), userForm.getPasswordConfirm());
+        securityService.autologin(userForm.getUsername(), userForm.getPasswordConfirm());
         return "redirect:/welcome";
     }
 }

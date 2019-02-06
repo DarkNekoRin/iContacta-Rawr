@@ -63,6 +63,10 @@ public class UploadController {
 	
     @Value("${ora.instance}")
     private String instance;
+	
+	
+	
+    
     @Value("${ruta.archivo}")
     private String UPLOADED_FOLDER;
     @Autowired

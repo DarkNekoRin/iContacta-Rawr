@@ -10,9 +10,21 @@
   background-size:cover;
   font-family: 'Omnes-Regular', 'Roboto', 'Inter UI' ,sans-serif;
 }
+@media (max-width: 767px) {
+  .demo-layout-transparent {
+	  background: url('../img/prueba2.jpg' );
+	  
+	  
+	  background-size: cover;
+	  background-repeat: no-repeat;
+	  	  
+	  display: flex;
+	  align-items: center;
+	  
+	  font-family: 'Omnes-Regular', 'Roboto', 'Inter UI' ,sans-serif;
+  }
+}
 
-
-@import url('https://rsms.me/inter/inter-ui.css');
 ::selection {
   background: #2D2F36;
 }
@@ -28,7 +40,7 @@
 .page {
   display: flex;
   flex-direction: column;
-  height: calc(100% - 40px);
+  height: calc(100% - 60px);
   position: absolute;
   place-content: center;
   width: calc(100% - 40px);
@@ -44,7 +56,7 @@
     
 .container {
   display: flex;
-  height: 320px;
+  height: 350px;
   margin: 0 auto;
   width: 640px;
 }
@@ -126,7 +138,10 @@ path {
 }
     
 .formfeo {
-  margin: 40px;
+  margin-top: 35px;
+  margin-bottom: 30px;
+  margin-left: 50px;
+  margin-right: 50px;
   position: absolute;
 }
 label {

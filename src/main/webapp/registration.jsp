@@ -14,7 +14,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>iContacta - Crear Cuenta</title>
+    <title>iContacta - Creación de Cuenta</title>
 
 
 	<link href="${contextPath}/resources/css/register.css" rel="stylesheet">
@@ -36,8 +36,10 @@
 				<div class="image-holder">
 					<img src="${contextPath}/resources/img/lol.PNG" alt="">
 				</div>
+				
+				
 				<form:form method="POST" modelAttribute="userForm" class="form-signin">
-					<h3 class="logintxt">Crea tu Cuenta</h3>
+					<h3 class="logintxt">Creación de Cuenta</h3>
 
 					<div class="form-wrapper">
 
@@ -84,7 +86,6 @@
 				        </spring:bind>
 				        				        
 					</div>
-
 
                     
 					<button  type="submit" >Registrar </button>
