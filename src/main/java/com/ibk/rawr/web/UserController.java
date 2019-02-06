@@ -148,7 +148,7 @@ public class UserController {
     		 return "redirect:/cambiarpassword"; 
     	 }
     	 user.setUltimaSesion(Calendar.getInstance());
-    	 userService.update(user);    	
+    	//  userService.update(user);    	
         return "welcome";
     }
     @RequestMapping(value = "/cambiarpassword", method = RequestMethod.GET)

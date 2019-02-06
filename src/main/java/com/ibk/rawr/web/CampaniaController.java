@@ -30,7 +30,7 @@ public class CampaniaController {
 	@GetMapping(value = "/mostrarCampania")
     public @ResponseBody Contenido mostrarCampania(HttpServletRequest httpRequest, Locale locale){
 		Contenido resp=new Contenido();		
-		resp.setData(campaniaService.listar());
+		// resp.setData(campaniaService.listar());
 		
 		return resp;
 	}
