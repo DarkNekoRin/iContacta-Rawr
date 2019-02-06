@@ -2,18 +2,16 @@ package com.ibk.rawr.model;
 
 import java.util.List;
 
-import com.ibk.rawr.entity.MaestraDataEntry;
-
 public class Contenido {
-	public List<MaestraDataEntry> data;
+	public List<?> data;
 	public int recordsTotal;
 	public int recordsFiltered;
 	public String sEcho;
 	
-	public List<MaestraDataEntry> getData() {
+	public List<?> getData() {
 		return data;
 	}
-	public void setData(List<MaestraDataEntry> data) {
+	public void setData(List<?> data) {
 		this.data = data;
 	}
 	

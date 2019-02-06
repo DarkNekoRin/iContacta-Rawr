@@ -3,7 +3,6 @@
  */
 
 $(document ).ready(function() {	
-	$("#divFormulario").show();$("#divTblOutput").hide();	
 
 	$(".alert").hide();	
 	$('#idSolicitud').val("");
@@ -21,11 +20,11 @@ $(document ).ready(function() {
         "iDisplayLength": 10,
         "sPaginationType" : 'full_numbers',
         "ajax": {
-            "url": './mostrarSalida',
+            "url": './mostrarCampania',
             "type":'GET',
             "data": function (d) {
             	console.log("llamadaAjax"); 
-                d.filtroIdSolicitud = $('#idSolicitud').val();
+                d.filtroCodCampania = $('#codCampania').val();
             }
           },
         "serverSide": true,
