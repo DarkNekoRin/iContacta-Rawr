@@ -1,7 +1,6 @@
 package com.ibk.rawr.web;
 
 import java.util.Calendar;
-import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -14,7 +13,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ValidationUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,10 +20,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ibk.rawr.entity.User;
-import com.ibk.rawr.service.HalconCampaniaService;
 import com.ibk.rawr.service.SecurityService;
 import com.ibk.rawr.service.UserService;
-import com.ibk.rawr.util.Constantes;
 import com.ibk.rawr.validator.UserValidator;
 
 @Controller
@@ -40,8 +36,6 @@ public class UserController {
     @Autowired
     private UserValidator userValidator;
     
-    @Autowired
-    private HalconCampaniaService  halcon;
 
     @RequestMapping(value = "/resetpassword", method = RequestMethod.GET)
     public String resetpassword(Model model) {
@@ -95,7 +89,7 @@ public class UserController {
         userService.save(userForm);
 //      securityService.autologin(userForm.getUsername(), userForm.getPasswordConfirm());
         model.addAttribute("username", userForm.getUsername());
-        model.addAttribute("titulo", "FELICITACIONES ");
+        model.addAttribute("titulo", "FELICITACIONES");
         return "solicitud";
     }
     
