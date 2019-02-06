@@ -95,7 +95,7 @@ public class UserController {
         userService.save(userForm);
 //      securityService.autologin(userForm.getUsername(), userForm.getPasswordConfirm());
         model.addAttribute("username", userForm.getUsername());
-        model.addAttribute("titulo", "FELICITACIONES");
+        model.addAttribute("titulo", "FELICITACIONES ");
         return "solicitud";
     }
     
@@ -104,10 +104,6 @@ public class UserController {
                 @RequestParam(value = "error", required = false) String error,
 		@RequestParam(value = "logout", required = false) String logout, 
                 HttpServletRequest request) {
-
-		halcon.obtenerCampania("http://s340vp22:9080/api/jsonws/formulario-dinamico-portlet.formularioregistrodinamico/get-listar-registros-fb?valor=201902_WISIN_B");
-		
-		
 		ModelAndView model = new ModelAndView();
 		if (error != null) {
 			model.addObject("error", 

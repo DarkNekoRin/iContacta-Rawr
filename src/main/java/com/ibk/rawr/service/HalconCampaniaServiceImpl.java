@@ -1,5 +1,9 @@
 package com.ibk.rawr.service;
 
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
 import org.apache.commons.codec.binary.Base64;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -19,11 +23,9 @@ public class HalconCampaniaServiceImpl implements HalconCampaniaService{
 
 	
 	@Override
-	public String obtenerCampania(String url) {
-
-		   url = "http://localhost:8080/assets/input_json_api.json";
+	public JSONArray obtenerCampania(String url,String usuario,String password,String codCampania) throws Exception {
 		   
-		String plainCreds = "mromerola:V#qTnxsYVkMzjf22FiH";
+		String plainCreds = usuario+":"+password;
 		byte[] plainCredsBytes = plainCreds.getBytes();
 		byte[] base64CredsBytes = Base64.encodeBase64(plainCredsBytes);
 		String base64Creds = new String(base64CredsBytes);
@@ -32,33 +34,47 @@ public class HalconCampaniaServiceImpl implements HalconCampaniaService{
 		headers.add("Authorization", "Basic " + base64Creds);
 		
 		HttpEntity<String> request = new HttpEntity<String>(headers);
-		ResponseEntity<JSONObject> response = restTemplate.exchange(url, HttpMethod.GET, request, JSONObject.class);
-		JSONObject jsonResponse = response.getBody();
+        //adding the query params to the URL
+		Map<String, String> mapParam=new HashMap();
+		mapParam.put("valor", codCampania);
+		ResponseEntity<JSONObject> response=null;
 		
-//		account=account.replace("\"","").replaceAll("\\\\", "\"");
+		try {
+			response = restTemplate.
+					exchange(url, 						
+							HttpMethod.GET, 
+							request, 
+							JSONObject.class,
+							mapParam);
+		} catch (Exception e1) {
+			throw new Exception("Error en la invocacion del servivio campania");
+		}
 
-		
-//		   final String uri = "http://localhost:8080/assets/input_json_api.json";
-//		     
-//		    RestTemplate restTemplate = new RestTemplate();
-//		    String result = restTemplate.getForObject(uri, String.class);
-//		     
+		JSONObject jsonResponse = response.getBody();		
+
 		JSONObject jsonBody;
+		JSONArray lista=null;
 		try {
 			jsonBody = (JSONObject) jsonResponse.get("body");
-			JSONArray lista= jsonBody.getJSONArray("listarLlamadaAutomatica");
+			lista= jsonBody.getJSONArray("listarLlamadaAutomatica");
 			
 		} catch (JSONException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			throw new Exception("Error al procesar respuesta");
 		}
-	
 		
+		return lista;
+	}
+
+
+
+	@Override
+	public void grabarDatos(JSONArray lista) throws Exception {
+		if(lista!=null) {
+//			for(JSONObject fila:lista) {
+//				
+//			}
+		}
 		
-		    System.out.println("");
-		
-		
-		return null;
 	}
 	
 	
