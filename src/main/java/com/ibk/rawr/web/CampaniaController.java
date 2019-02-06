@@ -1,6 +1,7 @@
 package com.ibk.rawr.web;
 
 import java.util.Locale;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,9 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ibk.rawr.model.Contenido;
@@ -27,13 +26,13 @@ import com.ibk.rawr.service.HalconCampaniaService;
 public class CampaniaController {
 	private static final Logger logger = LoggerFactory.getLogger(CampaniaController.class);
 	
-	@Value("${uri.campania")
+	@Value("${uri.campania}")
 	private String uriCampania;
 	
-	@Value("${campania.usuario")
+	@Value("${campania.usuario}")
 	private String usuarioCampania;
 	
-	@Value("${campania.password")
+	@Value("${campania.password}")
 	private String passwordCampania;
 	
 	
@@ -44,23 +43,24 @@ public class CampaniaController {
 	@GetMapping(value = "/mostrarCampania")
     public @ResponseBody Contenido mostrarCampania(HttpServletRequest httpRequest, Locale locale){
 		Contenido resp=new Contenido();		
-		// resp.setData(campaniaService.listar());
+		resp.setData(campaniaService.listar());
 		
 		return resp;
 	}
-    @RequestMapping(value = {"/campania"}, method = RequestMethod.GET)
+	@GetMapping(value = {"/campania"})
     public String campania(Model model,HttpServletRequest request) { 
         return "campania";
     }
 
     
-    @PostMapping("/procesar")
-    public @ResponseBody Respuesta procesar(@RequestParam String filtroCodCampania ) {
+    @PostMapping("/procesar") 
+    public @ResponseBody Respuesta procesar(@RequestBody Map<String,Object> body ) {
     	logger.info("Inicio Consulta Rest Campania");	
     	Respuesta resp = new Respuesta();
     	JSONArray lista=null;
     	try {
-    		lista=halcon.obtenerCampania(uriCampania,usuarioCampania,passwordCampania,filtroCodCampania);
+    		
+    		lista=halcon.obtenerCampania(uriCampania,usuarioCampania,passwordCampania,body.get("filtroCodCampania").toString());
     		
 		} catch (Exception e) {
 			resp.setResponseCode(-1);
@@ -69,7 +69,7 @@ public class CampaniaController {
 		}
     	if(lista!=null) {
     		try {
-				halcon.grabarDatos(lista);
+				halcon.grabarDatosTxt(lista);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

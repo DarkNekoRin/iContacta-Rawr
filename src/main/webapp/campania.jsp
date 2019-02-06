@@ -32,11 +32,11 @@
 				<div class="box-content">
 					<h4 class="box-title" id="idTituloGrilla"></h4>
 			
-					<a class='aLink' href="#"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Exportar </a>
-						
+						<input type="text" id="txtCampania" class="form-control" id="inp-type-1" placeholder="Ingrese Codigo Campa&ntilde;a">
+						<button type="button" id="procesarCampania" class="btnForm btncolor">Procesar</button>
+	
 					<!-- /.box-title -->
-
-					
+										
 					
 					<!-- /.dropdown js__dropdown -->
 					<table id="tblOutput" class="table table-striped table-bordered displa" style="width:100%">

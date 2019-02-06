@@ -68,11 +68,9 @@ public class HalconCampaniaServiceImpl implements HalconCampaniaService{
 
 
 	@Override
-	public void grabarDatos(JSONArray lista) throws Exception {
+	public void grabarDatosTxt(JSONArray lista) throws Exception {
 		if(lista!=null) {
-//			for(JSONObject fila:lista) {
-//				
-//			}
+System.out.println("rer");
 		}
 		
 	}

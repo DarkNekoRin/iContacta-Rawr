@@ -17,7 +17,4 @@ public class CampaniaServiceImpl implements CampaniaService{
 	public List<Campania> listar() {		
 		return campaniaRepository.findAll();
 	}
-
-
-    
 }

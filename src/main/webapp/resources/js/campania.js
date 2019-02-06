@@ -39,22 +39,12 @@ $(document ).ready(function() {
 	
 
 	
-	$('#buscar').click(function(){	
+	$('#procesarCampania').click(function(){	
 		console.log("buscar"); 
-        var form = $('#fileUploadForm')[0];
-
-        var data = new FormData(form);
-
-        //stop submit the form, we will post it manually.
-        event.preventDefault();
-
-        // Get form
-        var form = $('#fileUploadForm')[0];
-
-		// Create an FormData object 
-        var data = new FormData(form);
+debugger;
+        var codCampania=$("#txtCampania").val();
         
-        if(data.get("file").name.length>0){
+        if(codCampania.length>0){
     		// If you want to add an extra field for the FormData
             //data.append("CustomField", "This is some extra data, testing");
     		// disabled the submit button
@@ -66,30 +56,26 @@ $(document ).ready(function() {
 				showConfirmButton: false
 			});
 //        	
-        	$("#procesar").prop("disabled", true);
+        	$("#procesarCampania").prop("disabled", true);
+        	var data = {"filtroCodCampania":codCampania}
             $.ajax({
                 type: "POST",
-                enctype: 'multipart/form-data',
-                url: "/upload",
-                data: data,
-                processData: false,
-                contentType: false,
-                cache: false,
-                timeout: 600000,
+                contentType: "application/json",
+                url: "/procesar",
+                data:JSON.stringify(data),
+  			    dataType: 'json',
+  			    timeout: 600000,
                 success: function (data) {  
-                	 swal.close();
+                	swal.close();
                 	if(data.estado){
                         console.log("SUCCESS : ", data);
-                        $("#procesar").prop("disabled", false);
+                        $("#procesarCampania").prop("disabled", false);
                     	//data.values.idSolicitud="B28219201812271823";
-                        $('#idSolicitud').val(data.values.idSolicitud);
                         table.ajax.reload();
-                        $('#idTituloGrilla').text("SOLICITUD: "+data.values.idSolicitud);
-                        $('.aLink').attr('href','/download/output.xlsx?idSolicitud='+data.values.idSolicitud);                    
-                        $("#divFormulario").hide();$("#divTblOutput").show();
+                        $('#idTituloGrilla').text("CAMPA&Ntilde;A: "+codCampania); 
                 	}else{                  
                        
-                        $("#procesar").prop("disabled", false);
+                        $("#procesarCampania").prop("disabled", false);
                         
                         Command: toastr["error"](data.mensaje, "iContacta - Interbank")
 
@@ -115,10 +101,11 @@ $(document ).ready(function() {
 
                 },
                 error: function (e) {
+                	debugger;
                     console.log("ERROR : ", e);
                     swal.close();
-                    $("#procesar").prop("disabled", false);
-                    $('#idTituloGrilla').text("ERROR AL CARGAR DATA");
+                    $("#procesarCampania").prop("disabled", false);
+                    $('#idTituloGrilla').text("ERROR AL PROCESAR LA DATA");
                     
                     Command: toastr["error"](e, "iContacta - Interbank")
 
@@ -143,7 +130,7 @@ $(document ).ready(function() {
                 }
             });
         }else{
-            Command: toastr["warning"]("iContacta - Interbank", "Sube un archivo .TXT")
+            Command: toastr["warning"]("iContacta - Interbank", "Ingresa Valor")
 
     		toastr.options = {
     		  "closeButton": false,
