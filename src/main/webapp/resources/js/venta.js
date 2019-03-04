@@ -19,52 +19,55 @@ $(document ).ready(function() {
         "iDisplayLength": 10,
         "sPaginationType" : 'full_numbers',
         "ajax": {
-            "url": './mostrarCampania',
+            "url": './mostrarVenta',
             "type":'GET',
             "data": function (d) {
             	console.log("llamadaAjax"); 
-                d.filtroCodCampania = $('#codCampania').val();
             }
           },
         "serverSide": true,
         "columns": [
-            { "data": "formulario" },
-            { "data": "codigoFb" },
-            { "data": "dni" },
-            { "data": "fecha" }
+            { "data": "idExpediente" },
+            { "data": "documento" },
+            { "data": "correo" },
+            { "data": "celular" },
+            { "data": "estado" },
+            { "data": "codigoSiebel" },
+            { "data": "tipDocumento" },
+            { "data": "fechaRegistro" },
+            { "data": "campaniaWeb" },
+            { "data": "lpdp" }            
         ],
         "select": true
     } );
 	
 
 	
-	$('#procesarCampania').click(function(){	
-		console.log("buscar"); 
-debugger;
-        var codCampania=$("#txtCampania").val();
-        
-        if(codCampania.length>0){
-    		// If you want to add an extra field for the FormData
-            //data.append("CustomField", "This is some extra data, testing");
-    		// disabled the submit button
-        	        		 
+	$('#procesarVenta').click(function(){	
+		console.log("buscar");
 			swal({   
 				title: "Procesando",   
 				text: "Espere. "    ,	
 				showLoaderOnConfirm: true ,
 				showConfirmButton: false
 			});
-//        	
-        	$("#procesarCampania").prop("disabled", true);
-        	var data = {"filtroCodCampania":codCampania}
+	        var form = $('#formVenta')[0];
+
+	        var data = new FormData(form);
+
+	        //stop submit the form, we will post it manually.
+	        event.preventDefault();
             $.ajax({
                 type: "POST",
                 contentType: "application/json",
-                url: "/procesar",
-                data:JSON.stringify(data),
-  			    dataType: 'json',
-  			    timeout: 600000,
-                success: function (data) {  
+                url: "/procesarVenta",
+                data: data,
+                processData: false,
+                contentType: false,
+                cache: false,
+                timeout: 600000,
+                success: function (data) { 
+                	debugger;
                 	swal.close();
                 	if(data.estado){
                         console.log("SUCCESS : ", data);
@@ -128,29 +131,8 @@ debugger;
                     }                    
                 }
             });
-        }else{
-            Command: toastr["warning"]("iContacta - Interbank", "Ingresa Valor")
-
-    		toastr.options = {
-    		  "closeButton": false,
-    		  "debug": false,
-    		  "newestOnTop": false,
-    		  "progressBar": true,
-    		  "rtl": false,
-    		  "positionClass": "toast-top-right",
-    		  "preventDuplicates": false,
-    		  "onclick": null,
-    		  "showDuration": 300,
-    		  "hideDuration": 1000,
-    		  "timeOut": 50000,
-    		  "extendedTimeOut": 1000,
-    		  "showEasing": "swing",
-    		  "hideEasing": "linear",
-    		  "showMethod": "fadeIn",
-    		  "hideMethod": "fadeOut"
-    		}
-        } 	
+        	
         
 	});	
-	
+
 })

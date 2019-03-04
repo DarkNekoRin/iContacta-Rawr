@@ -98,7 +98,9 @@
 				<li>
 					<a class="waves-effect" href="campania"><i class="menu-icon mdi mdi-account-star-variant"></i><span> Campa&ntilde;a </span></a>
 				</li>
-
+				<li>
+					<a class="waves-effect" href="venta"><i class="menu-icon mdi mdi-account-star-variant"></i><span> Venta </span></a>
+				</li>
 			</ul>
 		</div>
 		<!-- /.navigation -->
