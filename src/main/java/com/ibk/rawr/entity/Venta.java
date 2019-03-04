@@ -1,13 +1,9 @@
 package com.ibk.rawr.entity;
 
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 
 @Entity
 @Table(name = "DGOV_VENTA_DIGITAL_JSON",schema="DWHAC")
@@ -21,7 +17,6 @@ public class Venta {
     private String codigoSiebel; 
     private String tipDocumento;
     
-    private java.util.Calendar fechaRegistroBD;   
     private String fechaRegistro;  
     
     private String campaniaWeb;
@@ -110,16 +105,8 @@ public class Venta {
 	public void setIdExpediente(Long idExpediente) {
 		this.idExpediente = idExpediente;
 	}
-	@Basic
+
 	@Column(name = "FECHA")
-	@Temporal(TemporalType.TIMESTAMP)
-	public java.util.Calendar getFechaRegistroBD() {
-		return fechaRegistroBD;
-	}
-	public void setFechaRegistroBD(java.util.Calendar fechaRegistroBD) {
-		this.fechaRegistroBD = fechaRegistroBD;
-	}
-	@Transient
 	public String getFechaRegistro() {
 		return fechaRegistro;
 	}
