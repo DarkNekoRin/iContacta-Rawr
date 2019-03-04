@@ -49,6 +49,8 @@ import com.ibk.rawr.util.ExcelGenerator;
 import com.ibk.rawr.util.OracleSqlLoader;
 import com.ibk.rawr.util.OracleSqlLoader.ExitCode;
 import com.ibk.rawr.util.OracleSqlLoader.Results;
+import com.ibk.rawr.util.Util;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 @Controller
@@ -64,7 +66,8 @@ public class UploadController {
     @Value("${ora.instance}")
     private String instance;
 	
-	
+	@Value("${plantilla.bat}")
+	private String nombreBat;
 	
     
     @Value("${ruta.archivo}")
@@ -146,8 +149,8 @@ public class UploadController {
     		}
 
 //    		dataEntryService.saveIterable(list);
-            
-    	  ejecutaCarga(UPLOADED_FOLDER+idSolicitud);               		
+          File fileTXT=new File(UPLOADED_FOLDER+idSolicitud); 
+    	  ejecutaCarga(fileTXT,nombreBat);               		
           dataEntryService.ejecutarEtl(idSolicitud);
      		
              //eliminar archivo original
@@ -199,29 +202,36 @@ public class UploadController {
     }
     
    
-    public void ejecutaCarga(String path) {
-    	Connection conn;
-		try {
-			conn = dataSource.getConnection();
-	    	File dataFile=new File(path); 
-	    	  final Results results = OracleSqlLoader.bulkLoad(conn, username, password, instance, "DGOV_DATAENTRY_TMP", dataFile);
-		
-	        // ========================================================================================================
-	        // Analyze
-	        // ========================================================================================================
-	        if (results.exitCode != ExitCode.SUCCESS) {
-	                System.err.println("Failed. Exit code: " + results.exitCode + ". See log file: " + results.logFile);
-	                logger.error("Error al ejcutar la carga via CTL: " + results.exitCode + ". See log file: " + results.logFile);
-	        }
-		
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			logger.error("Error ejecutar en la BD: "+e.getMessage());
+    public void ejecutaCarga(File path,String nombrebat) {
+//    	Connection conn;
+//		try {
+//			conn = dataSource.getConnection();
+//	    	File dataFile=new File(path); 
+//	    	  final Results results = OracleSqlLoader.bulkLoad(conn, username, password, instance, "DGOV_DATAENTRY_TMP", dataFile);
+//		
+//	        // ========================================================================================================
+//	        // Analyze
+//	        // ========================================================================================================
+//	        if (results.exitCode != ExitCode.SUCCESS) {
+//	                System.err.println("Failed. Exit code: " + results.exitCode + ". See log file: " + results.logFile);
+//	                logger.error("Error al ejcutar la carga via CTL: " + results.exitCode + ". See log file: " + results.logFile);
+//	        }
+//		
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			logger.error("Error ejecutar en la BD: "+e.getMessage());
+//
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} 
+    	List<String> listComan=new ArrayList<>();
+		listComan.add(path.getParent()+File.separator+nombrebat);//"D:\\test.bat"
+		listComan.add(path.getName());//IBK_CRM_CARGA_JSON_VENTAS.CTL
+		listComan.add(path.getName().replace(".txt",".LOG"));//IBK_CRM_CARGA_JSON_VENTAS.LOG
+		listComan.add(path.getAbsolutePath());//C:\Proyectos\CTL_Carga_Oracle\IBK_CRM_CARGA_JSON_VENTAS\PROCESO\IBK_CRM_CARGA_JSON_VENTAS.TXT
 
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
+    	Util.ejecutarBat(listComan);
 
     }
     

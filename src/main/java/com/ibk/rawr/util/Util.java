@@ -35,9 +35,11 @@ public class Util {
 		return fechaFin;
 	}
 	public static int ejecutarBat(List<String> listComan) {
-//		List<String> listComan=new ArrayList<>();
-//		listComan.add("D:\\test.bat");
-//		listComan.add("Alfredo");
+//		listComan=new ArrayList<>();
+//		listComan.add("D:\\temp\\IBK_CRM_CARGA_JSON_VENTAS.bat");
+//		listComan.add("ventasB3475720190304172724.CTL");
+//		listComan.add("ventasB3475720190304172724.log");
+//		listComan.add("D:\\temp\\ventasB3475720190304172724.txt");
 		int result=-1;
 		ProcessBuilder processBuilder = new ProcessBuilder(listComan);						
 	        try {
@@ -57,7 +59,7 @@ public class Util {
 	            int exitVal = process.waitFor();
 	            if (exitVal == 0) {
 	                System.out.println(output);
-	                System.exit(0);
+//	                System.exit(0);
 	            } else {
 	                //abnormal...
 	            }

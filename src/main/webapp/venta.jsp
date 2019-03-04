@@ -42,7 +42,7 @@
 						
 					<!-- /.box-title -->
 					<!-- /.dropdown js__dropdown -->
-					<table id="tblOutput" class="table table-striped table-bordered displa" style="width:100%">
+					<table id="tblVenta" class="table table-striped table-bordered displa" style="width:100%">
 						<thead>
 							<tr>
 								<th>IDExp</th>

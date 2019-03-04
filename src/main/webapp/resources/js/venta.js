@@ -7,7 +7,7 @@ $(document ).ready(function() {
 	$('#idSolicitud').val("");
 	$('.aLink').attr('href','#');
 	
-	var table= $('#tblOutput').DataTable( {
+	var table= $('#tblVenta').DataTable( {
     	"bJQueryUI":true,
         "processing": true,
         "responsive": true,
@@ -67,14 +67,12 @@ $(document ).ready(function() {
                 cache: false,
                 timeout: 600000,
                 success: function (data) { 
-                	debugger;
                 	swal.close();
                 	if(data.estado){
                         console.log("SUCCESS : ", data);
                         $("#procesarCampania").prop("disabled", false);
-                    	//data.values.idSolicitud="B28219201812271823";
+                    	debugger;
                         table.ajax.reload();
-                        $('#idTituloGrilla').text("CAMPA&Ntilde;A: "+codCampania); 
                 	}else{                  
                        
                         $("#procesarCampania").prop("disabled", false);
@@ -103,7 +101,6 @@ $(document ).ready(function() {
 
                 },
                 error: function (e) {
-                	debugger;
                     console.log("ERROR : ", e);
                     swal.close();
                     $("#procesarCampania").prop("disabled", false);

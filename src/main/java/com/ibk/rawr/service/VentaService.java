@@ -12,6 +12,6 @@ public interface VentaService {
 	public File generarCTL(File pathTXT);
 	public ResponseVenta obtenerVentas(String url,String usuario,String password,RequestVenta requestVenta)throws Exception;
 	public File grabarVentaTxt(List<Venta> lista,String pathDirectorio,String user)throws Exception;
-	public int ejecutarCarga(File datos);
+	public int ejecutarCarga(File datos,String nombrebat);
 
 }

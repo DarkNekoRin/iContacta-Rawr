@@ -133,9 +133,9 @@ public class VentaServiceImpl implements VentaService{
 
 
 	@Override
-	public int ejecutarCarga(File datos) {
+	public int ejecutarCarga(File datos,String nombrebat) {
 		List<String> listComan=new ArrayList<>();
-		listComan.add(datos.getParent()+File.separator+"IBK_CRM_CARGA_JSON_VENTAS.bat");//"D:\\test.bat"
+		listComan.add(datos.getParent()+File.separator+nombrebat);//"D:\\test.bat"
 		listComan.add(datos.getName());//IBK_CRM_CARGA_JSON_VENTAS.CTL
 		listComan.add(datos.getName().replace(".CTL",".LOG"));//IBK_CRM_CARGA_JSON_VENTAS.LOG
 		listComan.add(datos.getAbsolutePath().replace(".CTL",".txt"));//C:\Proyectos\CTL_Carga_Oracle\IBK_CRM_CARGA_JSON_VENTAS\PROCESO\IBK_CRM_CARGA_JSON_VENTAS.TXT

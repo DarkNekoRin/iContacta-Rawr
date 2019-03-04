@@ -38,6 +38,9 @@ public class VentaController {
 	@Value("${venta.password}")
 	private String passwordVenta;
 	
+	@Value("${plantilla.bat}")
+	private String nombreBat;
+	
     @Value("${ruta.archivo}")
     private String UPLOADED_FOLDER;
 	@Autowired
@@ -83,8 +86,10 @@ public class VentaController {
 				e.printStackTrace();
 			}
     		txtVentas=ventaService.generarCTL(txtVentas);
-    		ventaService.ejecutarCarga(txtVentas);
-    		
+    		ventaService.ejecutarCarga(txtVentas,nombreBat);
+			resp.setResponseCode(0);
+			resp.setEstado(true);
+			resp.setMensaje("Carga Correcta");
     	}else {
 			resp.setResponseCode(-1);
 			resp.setEstado(false);
