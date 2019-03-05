@@ -71,7 +71,6 @@ $(document ).ready(function() {
                 	if(data.estado){
                         console.log("SUCCESS : ", data);
                         $("#procesarCampania").prop("disabled", false);
-                    	debugger;
                         table.ajax.reload();
                 	}else{                  
                        
