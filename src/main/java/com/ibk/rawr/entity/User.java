@@ -54,7 +54,7 @@ public class User {
 	public void setId(Long id) {
         this.id = id;
     }
-
+	@Column(unique=true)
     public String getUsername() {
         return username;
     }

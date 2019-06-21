@@ -41,6 +41,7 @@
 	
 		<!-- Toastr -->
 	<link rel="stylesheet" href="${contextPath}/assets/plugin/toastr/toastr.css">
+	<link rel="stylesheet" href="${contextPath}/resources/css/pagination.css">
 </head>
 
 <body>
@@ -101,6 +102,10 @@
 				<li>
 					<a class="waves-effect" href="venta"><i class="menu-icon mdi mdi-account-star-variant"></i><span> Venta </span></a>
 				</li>
+				<li>
+					<a class="waves-effect" href="usuariolist"><i class="menu-icon mdi mdi-account-star-variant"></i><span> Usuario </span></a>
+				</li>
+				
 			</ul>
 		</div>
 		<!-- /.navigation -->

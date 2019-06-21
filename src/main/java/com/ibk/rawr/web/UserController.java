@@ -1,31 +1,43 @@
 package com.ibk.rawr.web;
 
 import java.util.Calendar;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.LockedException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ibk.rawr.entity.User;
 import com.ibk.rawr.service.SecurityService;
 import com.ibk.rawr.service.UserService;
+import com.ibk.rawr.util.Constantes;
+import com.ibk.rawr.util.DateJsonValueProcessor;
 import com.ibk.rawr.validator.UserValidator;
 
+import net.sf.json.JSONArray;
+import net.sf.json.JsonConfig;
+
 @Controller
-public class UserController {
+public class UserController extends BaseController{
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
     @Autowired
     private UserService userService;
@@ -166,4 +178,42 @@ public class UserController {
         securityService.autologin(userForm.getUsername(), userForm.getPasswordConfirm());
         return "redirect:/welcome";
     }
+	@GetMapping(value = {"/usuario"})
+    public String campania(Model model,HttpServletRequest request) { 
+        return "usuario";
+    }
+    
+    
+    @RequestMapping(value = "/queryAll",produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public ModelAndView findAll(HttpServletRequest request, HttpServletResponse response, Model model){
+        //当前页
+        String pageIndexStr = request.getParameter("pageIndex");
+
+        //每一页的页数
+        int pageSize = Constantes.PAGE_SIZE;
+        ModelAndView mv = this.getModelAndView();
+        Page<User> userPage;
+
+        if(pageIndexStr==null||"".equals(pageIndexStr)){
+            pageIndexStr = "0";
+        }
+
+        int pageIndex = Integer.parseInt(pageIndexStr);
+
+        userPage = userService.findAll(pageIndex+1, pageSize, Sort.Direction.ASC,"id");
+        mv.addObject("totalCount",userPage.getTotalElements());
+        mv.addObject("pageIndex",pageIndex);
+//        JsonConfig cfg = new JsonConfig();
+//        cfg.setExcludes(new String[]{"handler","hibernateLazyInitializer"});
+        JsonConfig jcg = new JsonConfig();
+        jcg.registerJsonValueProcessor(Date.class,
+                new DateJsonValueProcessor("yyyy-mm-dd"));
+        JSONArray jsonArray = JSONArray.fromObject(userPage.getContent(),jcg);
+        //System.out.println(jsonArray.toString());
+        mv.addObject("users",jsonArray.toString());
+        mv.setViewName("usuariolist");
+        return mv;
+    }
+
 }
