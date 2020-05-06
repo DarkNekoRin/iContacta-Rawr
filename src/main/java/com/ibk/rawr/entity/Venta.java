@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "DGOV_VENTA_DIGITAL_JSON",schema="DWHAC")
+@Table(name = "DGOV_VENTA_DIGITAL_JSON",schema="[esquema]")
 public class Venta {
 	
     private Long idExpediente;   
