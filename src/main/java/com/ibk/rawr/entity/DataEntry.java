@@ -15,7 +15,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "DGOV_DATAENTRY_TMP",schema="DWHAC")
+@Table(name = "DGOV_DATAENTRY_TMP",schema="[AQUI VA EL ESQUEMA]")
 public class DataEntry {
 	
     private Long id;   
