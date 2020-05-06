@@ -11,7 +11,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "dgov_dataentry_rol",schema="DWHAC")
+@Table(name = "dgov_dataentry_rol",schema="[ESQUEMA]")
 public class Role {
     private Long id;
     private String name;
