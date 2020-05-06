@@ -18,7 +18,7 @@ import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
 @Entity
-@Table(name = "dgov_dataentry_usuario",schema="DWHAC")
+@Table(name = "dgov_dataentry_usuario",schema="[esquema]")
 public class User {
     private Long id;
     private String username;
@@ -81,7 +81,7 @@ public class User {
     }
 
     @ManyToMany
-    @JoinTable(name = "dgov_dataentry_usuario_rol",schema="DWHAC", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    @JoinTable(name = "dgov_dataentry_usuario_rol",schema="[esquema]", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     public Set<Role> getRoles() {
         return roles;
     }
