@@ -13,7 +13,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "DGOV_HALCON_PROMOCIONES_JSON",schema="DWHAC")
+@Table(name = "DGOV_HALCON_PROMOCIONES_JSON",schema="[ESQUEMA AQUI]")
 public class Campania {
 	
     private Long id;   
